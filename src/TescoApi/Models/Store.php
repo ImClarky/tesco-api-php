@@ -376,7 +376,7 @@ class Store
     {
         $now = new DateTime();
 
-        $openingTime = $this->isDateInExceptions
+        $openingTime = $this->isDateInExceptions($now)
             ? $this->getOpeningTimeExceptionByDate($now)
             : $this->getOpeningTimeByDate($now);
 

@@ -43,4 +43,109 @@ class Product
     {
         return $this->_gtin;
     }
+
+    public function getTpnbNumber()
+    {
+        return $this->_tpnb;
+    }
+
+    public function getTpncNumber()
+    {
+        return $this->_tpnc;
+    }
+
+    public function getDescription()
+    {
+        return $this->_description;
+    }
+
+    public function getBrand()
+    {
+        return $this->_brand;
+    }
+
+    public function getQuantity()
+    {
+        return $this->_quantity;
+    }
+
+    public function getTotalQuantity()
+    {
+        return $this->_totalQuantity;
+    }
+
+    public function getUnitOfMeasure()
+    {
+        return $this->_unitOfMesaure;
+    }
+
+    public function getNetContents()
+    {
+        return $this->_netContents;
+    }
+
+    public function getAverageMeasure()
+    {
+        return $this->_averageMeasure;
+    }
+
+    public function isFood()
+    {
+        return $this->_isFood;
+    }
+
+    public function isDrink()
+    {
+        return $this->_isDrink;
+    }
+
+    public function isHazardous()
+    {
+        return $this->_isHazardous;
+    }
+
+    public function isNonLiquidAnaglesic()
+    {
+        return $this->_isNonLiquidAnaglesic;
+    }
+
+    public function getStorageType()
+    {
+        return $this->_storageType;
+    }
+
+    public function containsLoperamide()
+    {
+        return $this->_containsLoperamide;
+    }
+
+    public function getWidth($withUnits = true)
+    {
+        return $this->_width . ($withUnits ? $this->_dimensionUnitOfMeasure : '');
+    }
+
+    public function getHeight($withUnits = true)
+    {
+        return $this->_height . ($withUnits ? $this->_dimensionUnitOfMeasure : '');
+    }
+
+    public function getDepth($withUnits = true)
+    {
+        return $this->_depth . ($withUnits ? $this->_dimensionUnitOfMeasure : '');
+    }
+
+    public function getDimensionString()
+    {
+        return "W{$this->_width}xH{$this->_height}xD{$this->_depth}{$this->_dimensionUnitOfMeasure}";
+    }
+
+    public function getWeight($withUnits = true)
+    {
+        return $this->_weight . ($withUnits ? $this->_weightUnitOfMeasure : '');
+    }
+
+    public function getVolume($withUnits = true)
+    {
+        return $this->_volume . ($withUnits ? $this->_volumeUnitOfMeasure : '');
+    }
 }

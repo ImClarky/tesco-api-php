@@ -4,6 +4,9 @@ namespace ImClarky\TescoApi\Requests\Traits;
 
 trait PaginationTrait
 {
+    protected $_limit = 10;
+    protected $_offset = 0;
+
     public function getNextPage()
     {
 
