@@ -2,42 +2,42 @@
 
 namespace ImClarky\TescoApi\Requests;
 
-use ImClarky\TescoApi\Request;
+use ImClarky\TescoApi\Requests\Request;
 use ImClarky\TescoApi\Models\Product;
 
 class ProductRequest extends Request
 {
     protected $_gtin = [];
     protected $_tpnb = [];
-    protected $_tnpc = [];
+    protected $_tpnc = [];
     protected $_catId = [];
 
-    protected $uri = 'product';
+    protected $_uri = '/product';
 
-    public function __construct($apiKey)
+    public function __construct(string $apiKey)
     {
         parent::__construct($apiKey);
     }
 
-    public function addGtin($gtin)
+    public function addGtin(string $gtin)
     {
         $this->_gtin[] = $gtin;
         return $this;
     }
 
-    public function addTpnb($tnpb)
+    public function addTpnb(string $tnpb)
     {
         $this->_tpnb[] = $tnpb;
         return $this;
     }
 
-    public function addTpnc($tpnc)
+    public function addTpnc(string $tpnc)
     {
         $this->_tpnc[] = $tpnc;
         return $this;
     }
 
-    public function addCatId($catId)
+    public function addCatId(string $catId)
     {
         $this->_catId[] = $catId;
         return $this;
@@ -64,11 +64,13 @@ class ProductRequest extends Request
             }
         }
 
-        $this->_queryString .= explode('&', $params);
+        $this->_queryString .= implode('&', $params);
     }
 
-    protected function resolveResponse()
+    public function resolveResponse()
     {
+        var_dump($this->_result);
+
         $resultset = [];
 
         foreach ($this->_result->products as $product) {

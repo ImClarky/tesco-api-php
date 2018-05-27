@@ -148,9 +148,9 @@ class Store
      * Constructor
      * Create a new Store object from the result dataset
      *
-     * @param array $dataset
+     * @param stdClass $dataset
      */
-    public function __construct($dataset)
+    public function __construct(stdClass $dataset)
     {
 
     }
@@ -310,11 +310,14 @@ class Store
 
     /**
      * Does the store have a certain facility
+     * Use Facility constants to check for facility
+     *
+     * eg $store->hasFacility(Facility::ACCESSIBLE_CAR_PARKING)
      *
      * @param string $type The type of facility
      * @return boolean
      */
-    public function hasFacility($type)
+    public function hasFacility(string $type)
     {
         foreach ($this->facilities as $facility) {
             if ($facility->getName() === $type) {
@@ -323,6 +326,34 @@ class Store
         }
 
         return false;
+    }
+
+    /**
+     * Does the store have a set of facilities
+     * Use Facility constants to check for facility
+     *
+     * eg $store->hasFacilities([
+     *      Facility::ACCESSIBLE_CAR_PARKING
+     *      Facility::NON_ASSISTED_WHEELCHAIR_ACCESS
+     *      Facility::ACCESSIBLE_TOILETS
+     * ])
+     *
+     * @param array $facilities
+     * @return boolean
+     */
+    public function hasFacilities(array $facilities)
+    {
+        if (empty($facilities)) {
+            return false;
+        }
+
+        foreach ($facilities as $facility) {
+            if (!$this->hasFacility($facility)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**

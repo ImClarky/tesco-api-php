@@ -22,9 +22,9 @@ class Grocery
     /**
      * Undocumented function
      *
-     * @param [type] $dataset
+     * @param stdClass $dataset
      */
-    public function __construct($dataset)
+    public function __construct(stdClass $dataset)
     {
 
     }
@@ -64,12 +64,12 @@ class Grocery
         return $this->_superDepartment;
     }
 
-    public function getPrice($withCurrency = true)
+    public function getPrice(bool $withCurrency = true)
     {
         return ($withCurrency ? "£" : '') . $this->_price;
     }
 
-    public function getUnitPrice($withCurrency = true)
+    public function getUnitPrice(bool $withCurrency = true)
     {
         return ($withCurrency ? "£" : '') . $this->_unitPrice;
     }

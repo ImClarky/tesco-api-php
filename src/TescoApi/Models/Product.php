@@ -28,6 +28,8 @@ class Product
     protected $_weightUnitOfMeasure;
     protected $_volume;
     protected $_volumeUnitOfMeasure;
+    protected $_gdas;
+    protected $_nutrition;
 
     /**
      * Connstructor for new Product Information
@@ -119,17 +121,17 @@ class Product
         return $this->_containsLoperamide;
     }
 
-    public function getWidth($withUnits = true)
+    public function getWidth(bool $withUnits = true)
     {
         return $this->_width . ($withUnits ? $this->_dimensionUnitOfMeasure : '');
     }
 
-    public function getHeight($withUnits = true)
+    public function getHeight(bool $withUnits = true)
     {
         return $this->_height . ($withUnits ? $this->_dimensionUnitOfMeasure : '');
     }
 
-    public function getDepth($withUnits = true)
+    public function getDepth(bool $withUnits = true)
     {
         return $this->_depth . ($withUnits ? $this->_dimensionUnitOfMeasure : '');
     }
@@ -139,12 +141,12 @@ class Product
         return "W{$this->_width}xH{$this->_height}xD{$this->_depth}{$this->_dimensionUnitOfMeasure}";
     }
 
-    public function getWeight($withUnits = true)
+    public function getWeight(bool $withUnits = true)
     {
         return $this->_weight . ($withUnits ? $this->_weightUnitOfMeasure : '');
     }
 
-    public function getVolume($withUnits = true)
+    public function getVolume(bool $withUnits = true)
     {
         return $this->_volume . ($withUnits ? $this->_volumeUnitOfMeasure : '');
     }

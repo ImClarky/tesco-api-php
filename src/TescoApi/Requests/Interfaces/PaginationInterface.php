@@ -6,7 +6,7 @@ interface PaginationInterface
 {
     public function getNextPage();
     public function getPrevPage();
-    public function goToPage($page);
-    public function setLimit($limit);
-    public function setOffset($offset);
+    public function goToPage(integer $page);
+    public function setLimit(integer $limit);
+    public function setOffset(integer $offset);
 }

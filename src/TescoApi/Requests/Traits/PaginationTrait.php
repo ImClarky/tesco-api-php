@@ -17,18 +17,18 @@ trait PaginationTrait
 
     }
 
-    public function goToPage($page)
+    public function goToPage(integer $page)
     {
 
     }
 
-    public function setLimit($limit)
+    public function setLimit(integer $limit)
     {
         $this->_limit = $limit;
         return $this;
     }
 
-    public function setOffset($offset)
+    public function setOffset(integer $offset)
     {
         $this->_offset = $offset;
         return $this;
