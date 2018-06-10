@@ -2,10 +2,10 @@
 
 namespace ImClarky\TescoApi\Requests;
 
-use ImClarky\TescoApi\Requests\Request;
-use ImClarky\TescoApi\Models\Product;
+use ImClarky\TescoApi\Requests\AbstractRequest;
+use ImClarky\TescoApi\Responses\ProductResponse;
 
-class ProductRequest extends Request
+class ProductRequest extends AbstractRequest
 {
     protected $_gtin = [];
     protected $_tpnb = [];
@@ -67,16 +67,16 @@ class ProductRequest extends Request
         $this->_queryString .= implode('&', $params);
     }
 
-    public function resolveResponse()
+    protected function resolveResponse()
     {
-        var_dump($this->_result);
+        // $resultset = [];
 
-        $resultset = [];
+        // foreach ($this->_result['products'] as $product) {
+        //     $resultset = new Product($product);
+        // }
 
-        foreach ($this->_result->products as $product) {
-            $resultset = new Product($product);
-        }
+        // return $resultset;
 
-        return $resultset;
+        return $this->_result;
     }
 }

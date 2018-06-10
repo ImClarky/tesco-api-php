@@ -2,7 +2,9 @@
 
 namespace ImClarky\TescoApi\Models\Store;
 
-class OpeningTime
+use ImClarky\TescoApi\Models\AbstractModel as BaseModel;
+
+class OpeningTime extends BaseModel
 {
     protected $_dayOfWeek;
     protected $_isOpen;

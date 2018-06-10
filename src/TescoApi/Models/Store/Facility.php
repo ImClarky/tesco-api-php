@@ -2,7 +2,9 @@
 
 namespace ImClarky\TescoApi\Models\Store;
 
-class Facility
+use ImClarky\TescoApi\Models\AbstractModel as BaseModel;
+
+class Facility extends BaseModel
 {
     /**
      * Facility Name

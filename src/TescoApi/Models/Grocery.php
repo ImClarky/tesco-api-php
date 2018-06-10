@@ -2,7 +2,9 @@
 
 namespace ImClarky\TescoApi\Models;
 
-class Grocery
+use ImClarky\TescoApi\Models\AbstractModel as BaseModel;
+
+class Grocery extends BaseModel
 {
     protected $_id;
     protected $_name;
@@ -22,11 +24,11 @@ class Grocery
     /**
      * Undocumented function
      *
-     * @param stdClass $dataset
+     * @param array $dataset
      */
-    public function __construct(stdClass $dataset)
+    public function __construct(array $dataset)
     {
-
+        parent::__construct($dataset);
     }
 
     public function getId()

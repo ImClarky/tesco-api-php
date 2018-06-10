@@ -2,14 +2,18 @@
 
 namespace ImClarky\TescoApi\Models;
 
+use ImClarky\TescoApi\Models\AbstractModel as BaseModel;
 use DateTime;
+use ImClarky\TescoApi\Models\Store\OpeningTime;
+use ImClarky\TescoApi\Models\Store\OpeningTimeException;
+use ImClarky\TescoApi\Models\Store\Facility;
 
 /**
  * Tesco Store object
  *
  * @author Sean Clark <seandclark94@gmail.com>
  */
-class Store
+class Store extends BaseModel
 {
     /**
      * Unique ID of the store
@@ -144,15 +148,64 @@ class Store
      */
     protected $_facilities = [];
 
+    protected $_dataMap = [
+        'id' => 'id',
+        'name' => 'name',
+        'branchNumber' => 'branchNumner',
+        'isoCountryCode' => 'isoCountryCode',
+        'isoSubdivision' => 'isoSubdivision',
+        'lines' => 'setAddressLines',
+        'town' => 'addrTown',
+        'postcode' => 'addrPostcode',
+        'latitude' => 'geoLatitude',
+        'longitude' => 'geoLongitude',
+        'type' => 'type',
+        'category' => 'category',
+        'currentStatus' => 'status',
+        'unit' => 'distanceMeasurement',
+        'value' => 'distanceValue',
+        'standardOpeningHours' => 'setOpeningTimes',
+        'exceptions' => 'setOpeningTimeExceptions',
+        'facilities' => 'setFacilities'
+    ];
+
     /**
      * Constructor
      * Create a new Store object from the result dataset
      *
-     * @param stdClass $dataset
+     * @param array $dataset
      */
-    public function __construct(stdClass $dataset)
+    public function __construct(array $dataset)
     {
+        parent::__construct($dataset);
+    }
 
+    /**
+     * Set the Opening Times
+     *
+     * @param array $openingTimes
+     * @return void
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    protected function setOpeningTimes(array $openingTimes)
+    {
+        foreach ($openingTimes as $openingTime) {
+            $this->_openingTimes[] = new OpeningTime($openingTime);
+        }
+    }
+
+    protected function setOpeningTimeExceptions(array $exceptions)
+    {
+        foreach ($exceptions as $exception) {
+            $this->_openingTimeExceptions[] = new OpeningTimeException($exception);
+        }
+    }
+
+    protected function setFacilities(array $facilities)
+    {
+        foreach ($facilities as $facility) {
+            $this->_facilities[] = new Facility($facility);
+        }
     }
 
     /**

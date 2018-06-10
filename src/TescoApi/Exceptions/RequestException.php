@@ -4,6 +4,6 @@ namespace ImClarky\TescoApi\Exceptions;
 
 use Exception;
 
-class RequestExceptions extends Exception
+class RequestException extends Exception
 {
 }

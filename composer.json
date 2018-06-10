@@ -16,13 +16,5 @@
         "psr-4": {
             "ImClarky\\TescoApi\\": "src/TescoApi"
         }
-    },
-    "autoload-dev": {
-        "classmap": [
-            "tests"
-        ],
-        "psr-4": {
-            "ImClarky\\TescoApi\\Tests\\": "tests"
-        }
     }
 }
