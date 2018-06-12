@@ -31,8 +31,6 @@ abstract class AbstractRequest
 
         $this->_result = curl_exec($this->_curl);
 
-        var_dump($this->_result);
-
         if (!$this->_result && !empty(curl_error($this->_curl))) {
             throw new RequestException(
                 curl_error($this->_curl),

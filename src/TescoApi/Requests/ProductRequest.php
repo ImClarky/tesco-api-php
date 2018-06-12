@@ -69,14 +69,6 @@ class ProductRequest extends AbstractRequest
 
     protected function resolveResponse()
     {
-        // $resultset = [];
-
-        // foreach ($this->_result['products'] as $product) {
-        //     $resultset = new Product($product);
-        // }
-
-        // return $resultset;
-
-        return $this->_result;
+        return new ProductResponse($this->_result);
     }
 }

@@ -21,6 +21,22 @@ class Grocery extends BaseModel
     protected $_averageUnitWeight;
     protected $_unitOfSale;
 
+    protected $_dataMap = [
+        'id' => 'id',
+        'name' => 'name',
+        'description' => 'setDescription',
+        'tpnb' => 'tpnb',
+        'image' => 'image',
+        'superDepartment' => 'superDepartment',
+        'price' => 'price',
+        'unitprice' => 'unitPrice',
+        'UnitQuantity' => 'unitQuantity',
+        'ContentsQuantity' => 'contentsQuantity',
+        'ContentsMeasureType' => 'contentsUnitOfMeasure',
+        'AverageSellingUnitWeight' => 'averageUnitWeight',
+        'UnitOfSale' => 'unitOfSale'
+    ];
+
     /**
      * Undocumented function
      *
