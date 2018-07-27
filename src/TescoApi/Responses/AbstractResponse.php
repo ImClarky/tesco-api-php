@@ -65,7 +65,7 @@ abstract class AbstractResponse
      */
     public function __construct(string $responseData)
     {
-        $data = explode(PHP_EOL . PHP_EOL, $responseData);
+        $data = preg_split("/\r\n\r\n|\n\n|\r\r/", $responseData);
         $this->_rawHeaders = $data[0];
         $this->_rawData = $data[1];
 
@@ -147,7 +147,7 @@ abstract class AbstractResponse
     }
 
     /**
-     * Generate the Models from the repsonse
+     * Generate the Models from the repsonse data
      *
      * @return void
      */

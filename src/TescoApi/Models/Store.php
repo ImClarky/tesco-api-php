@@ -3,10 +3,8 @@
 namespace ImClarky\TescoApi\Models;
 
 use ImClarky\TescoApi\Models\AbstractModel as BaseModel;
-use DateTime;
-use ImClarky\TescoApi\Models\Store\OpeningTime;
-use ImClarky\TescoApi\Models\Store\OpeningTimeException;
 use ImClarky\TescoApi\Models\Store\Facility;
+use ImClarky\TescoApi\Models\Store\OpeningTimesTrait;
 
 /**
  * Tesco Store object
@@ -15,6 +13,8 @@ use ImClarky\TescoApi\Models\Store\Facility;
  */
 class Store extends BaseModel
 {
+    use OpeningTimesTrait;
+
     /**
      * Unique ID of the store
      *
@@ -32,7 +32,7 @@ class Store extends BaseModel
     /**
      * The store's Branch Number
      *
-     * @var integer
+     * @var int
      */
     protected $_branchNumber;
 
@@ -128,20 +128,6 @@ class Store extends BaseModel
     protected $_distanceMeasurement;
 
     /**
-     * Array of OpeningTime objects
-     *
-     * @var array
-     */
-    protected $_openingTimes = [];
-
-    /**
-     * Array of OpeningTimeExecption objects
-     *
-     * @var array
-     */
-    protected $_openingTimeExceptions = [];
-
-    /**
      * Array of Facility objects
      *
      * @var array
@@ -170,6 +156,19 @@ class Store extends BaseModel
     ];
 
     /**
+     * Store constants
+     */
+     const TYPE_EXTRA = 'Extra';
+     const TYPE_METRO = 'Metro';
+     const TYPE_EXPRESS = 'Express';
+     const TYPE_SUPERSTORE = 'Superstore';
+
+     const CATEGORY_STORE = 'Store';
+     const CATEGORY_DISTRIBUTIONCENTRE = 'Distribution Centre';
+     const CATEGORY_CFC = 'CFC';
+     const CATEGORY_TRUNKINGSPOKE = 'Trunking Spoke';
+
+    /**
      * Constructor
      * Create a new Store object from the result dataset
      *
@@ -178,27 +177,6 @@ class Store extends BaseModel
     public function __construct(array $dataset)
     {
         parent::__construct($dataset);
-    }
-
-    /**
-     * Set the Opening Times
-     *
-     * @param array $openingTimes
-     * @return void
-     * @author Sean Clark <sean.clark@d3r.com>
-     */
-    protected function setOpeningTimes(array $openingTimes)
-    {
-        foreach ($openingTimes as $openingTime) {
-            $this->_openingTimes[] = new OpeningTime($openingTime);
-        }
-    }
-
-    protected function setOpeningTimeExceptions(array $exceptions)
-    {
-        foreach ($exceptions as $exception) {
-            $this->_openingTimeExceptions[] = new OpeningTimeException($exception);
-        }
     }
 
     protected function setFacilities(array $facilities)
@@ -302,6 +280,18 @@ class Store extends BaseModel
     }
 
     /**
+     * Is the store a specified type
+     *
+     * @param string $type
+     * @return boolean
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function isType(string $type)
+    {
+        return $this->_type === $type;
+    }
+
+    /**
      * Get the store category
      *
      * @return string
@@ -309,6 +299,18 @@ class Store extends BaseModel
     public function getCategory()
     {
         return $this->_category;
+    }
+
+    /**
+     * Is the store a specified category
+     *
+     * @param string $type
+     * @return boolean
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function isCategory(string $category)
+    {
+        return $this->_category === $category;
     }
 
     /**
@@ -417,114 +419,5 @@ class Store extends BaseModel
     public function getFacilities()
     {
         return $this->_facilities;
-    }
-
-    /**
-     * Get the store's opening times
-     *
-     * @return array
-     */
-    public function getOpeningTimes()
-    {
-        return $this->_openingTimes;
-    }
-
-    /**
-     * Get the store's opening time exceptions
-     *
-     * @return array
-     */
-    public function getOpeningTimesExceptions()
-    {
-        return $this->_openingTimeExceptions;
-    }
-
-    /**
-     * Is the store open on a given date
-     *
-     * @param DateTime $datetime The date to check
-     * @return boolean
-     */
-    public function isOpenOn(DateTime $datetime)
-    {
-        $date = $this->getOpeningTimeByDate($datetime);
-        return $date->isOpen();
-    }
-
-    /**
-     * Is the store open now
-     *
-     * @return boolean
-     */
-    public function isOpenNow()
-    {
-        $now = new DateTime();
-
-        $openingTime = $this->isDateInExceptions($now)
-            ? $this->getOpeningTimeExceptionByDate($now)
-            : $this->getOpeningTimeByDate($now);
-
-        $time = $now->format('Hi');
-
-        return $openingTime->isOpen()
-            ? ($openingTime->getOpeningTime() < $time && $openingTime->getClosingTime() > $time)
-            : false;
-    }
-
-    /**
-     * Is the date given in the Opening Times exceptionns list
-     *
-     * @param DateTime $date The date to check
-     * @return boolean
-     */
-    protected function isDateInExceptions(DateTime $date)
-    {
-        $isoDate = $date->format('Y-m-d');
-
-        foreach ($this->_openingTimeExceptions as $exception) {
-            if ($exception->date == $isoDate) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Get an OpeningTimeException object from a given date
-     *
-     * @param DateTime $date The date to get
-     * @return ImClarky\TescoApi\Models\Store\OpeningTimeException|boolean
-     */
-    protected function getOpeningTimeExceptionByDate(DateTime $date)
-    {
-        $isoDate = $date->format('Y-m-d');
-
-        foreach ($this->_openingTimeExceptions as $exception) {
-            if ($exception->getDate() == $isoDate) {
-                return $exception;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Get an OpeningTime object from a given date
-     *
-     * @param DateTime $date The date to get
-     * @return ImClarky\TescoApi\Models\Store\OpeningTime|boolean
-     */
-    protected function getOpeningTimeByDate(DateTime $date)
-    {
-        $isoDayOfWeek = $date->format('N');
-
-        foreach ($this->_openingTimeExceptions as $exception) {
-            if ($exception->getDayOfWeek() == $isoDayOfWeek) {
-                return $exception;
-            }
-        }
-
-        return false;
     }
 }

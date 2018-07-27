@@ -2,10 +2,13 @@
 
 namespace ImClarky\TescoApi\Models\Store;
 
-use ImClarky\TescoApi\Models\AbstractModel as BaseModel;
+use ImClarky\TescoApi\Models\Store\OpeningTime;
+use ImClarky\TescoApi\Models\Store\OpeningTimesTrait;
 
-class Facility extends BaseModel
+class Facility
 {
+    use OpeningTimesTrait;
+
     /**
      * Facility Name
      *
@@ -26,13 +29,6 @@ class Facility extends BaseModel
      * @var array
      */
     protected $_tags = [];
-
-    /**
-     * Facility Opening TImes
-     *
-     * @var array
-     */
-    protected $_openingTimes = [];
 
     /**
      * Facility Types
@@ -104,8 +100,32 @@ class Facility extends BaseModel
     const WIFI = 'WIFI';
     const WORLD_FOOD = 'WORLD_FOOD';
 
-    public function __construct()
+    public function __construct(array $dataset)
     {
+        $this->setName($dataset['name']);
+        $this->setDescription($dataset['description']);
 
+        if ($tags = $dataset['tags']) {
+            $this->setTags($tags);
+        }
+
+        if ($times = $dataset['openingHours'][0]['standardOpeningHours']) {
+            $this->setOpeningTimes($times);
+        }
+    }
+
+    protected function setName(string $name)
+    {
+        $this->_name = $name;
+    }
+
+    protected function setDescription(string $description)
+    {
+        $this->_description = $description;
+    }
+
+    protected function setTags(array $tags)
+    {
+        $this->_tags = $tags;
     }
 }

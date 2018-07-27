@@ -5,7 +5,7 @@ use ImClarky\TescoApi\Requests\ProductRequest;
 use ImClarky\TescoApi\Responses\AbstractResponse;
 use ImClarky\TescoApi\Models\Product;
 
-class ProductAPITests extends TestCase
+class ProductAPITest extends TestCase
 {
     private function getProductResponse()
     {

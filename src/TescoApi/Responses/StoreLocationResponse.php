@@ -3,14 +3,14 @@
 namespace ImClarky\TescoApi\Responses;
 
 use ImClarky\TescoApi\Responses\AbstractResponse;
-use ImClarky\TescoApi\Models\Product;
+use ImClarky\TescoApi\Models\Store;
 
 /**
- * Product Response Class
+ * Store Location Response Class
  *
  * @author Sean Clark <sean.clark@d3r.com>
  */
-class ProductResponse extends AbstractResponse
+class StoreLocationResponse extends AbstractResponse
 {
     /**
      * @inheritDoc
@@ -25,8 +25,8 @@ class ProductResponse extends AbstractResponse
      */
     protected function populateModels()
     {
-        foreach ($this->_data['products'] as $product) {
-            $this->_models[] = new Product($product);
+        foreach ($this->_data['results'] as $store) {
+            $this->_models[] = new Store($store);
         }
     }
 }

@@ -14,21 +14,27 @@ trait PaginationTrait
 
     public function getPrevPage()
     {
+        if ($this->_offset > 0) {
+            $this->_offset = max($this->_offset - $this->_limit, 0);
+        }
 
+        $this->send();
     }
 
-    public function goToPage(integer $page)
+    public function goToPage(int $page)
     {
+        $this->_offset = $this->_limit * ($page - 1);
 
+        $this->send();
     }
 
-    public function setLimit(integer $limit)
+    public function setLimit(int $limit)
     {
         $this->_limit = $limit;
         return $this;
     }
 
-    public function setOffset(integer $offset)
+    public function setOffset(int $offset)
     {
         $this->_offset = $offset;
         return $this;

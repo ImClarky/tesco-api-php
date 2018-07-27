@@ -4,17 +4,66 @@ namespace ImClarky\TescoApi\Requests;
 
 use ImClarky\TescoApi\Exceptions\RequestException;
 use ImClarky\TescoApi\Responses\AbstractResponse;
+use function GuzzleHttp\Psr7\_parse_request_uri;
 
+/**
+ * Abstract Request Class
+ *
+ * @author Sean Clark <sean.clark@d3r.com>
+ */
 abstract class AbstractRequest
 {
+    /**
+     * API Key
+     *
+     * @var string
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
     protected $_apiKey;
+
+    /**
+     * The API uri endpoint
+     *
+     * @var string
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
     protected $_uri = '/';
+
+    /**
+     * Query string holding our request params
+     *
+     * @var string
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
     protected $_queryString = '?';
+
+    /**
+     * The cURL resource
+     *
+     * @var resource
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
     protected $_curl;
+
+    /**
+     * Response from curl_exec
+     *
+     * @var string
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
     protected $_result;
 
+    /**
+     * The base url of the API
+     */
     const BASEURL = "https://dev.tescolabs.com";
 
+    /**
+     * Request constructor
+     *
+     * @param string $apiKey
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
     public function __construct(string $apiKey)
     {
         if (empty($apiKey)) {
@@ -24,6 +73,12 @@ abstract class AbstractRequest
         $this->_curl = curl_init();
     }
 
+    /**
+     * Send our API request
+     *
+     * @return ImClarky\TescoApi\Responses\AbstractResponse
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
     public function send()
     {
         $this->buildQueryString();
@@ -41,6 +96,12 @@ abstract class AbstractRequest
         return $this->resolveResponse();
     }
 
+    /**
+     * Set the cURL options of our request
+     *
+     * @return void
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
     private function setCurlOptions()
     {
         $options = [
@@ -51,16 +112,36 @@ abstract class AbstractRequest
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_HEADER => true,
+            CURLOPT_ENCODING => 'gzip',
         ];
 
         curl_setopt_array($this->_curl, $options);
     }
 
+    /**
+     * Get the full request url
+     *
+     * @return string
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
     private function getRequestUri()
     {
         return static::BASEURL . $this->_uri . $this->_queryString;
     }
 
+    /**
+     * Build the query string
+     *
+     * @return void
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
     protected abstract function buildQueryString();
+
+    /**
+     * Resolve the response from the cURL request to a Response object
+     *
+     * @return ImClarky\TescoApi\Responses\AbstractResponse
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
     protected abstract function resolveResponse();
 }
