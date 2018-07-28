@@ -2,38 +2,209 @@
 
 namespace ImClarky\TescoApi\Models;
 
-use ImClarky\TescoApi\Models\AbstractModel as BaseModel;
+use ImClarky\TescoApi\Models\AbstractModel;
+use ImClarky\TescoApi\Models\Product\Gda;
+use ImClarky\TescoApi\Models\Product\Nutrition;
 
-class Product extends BaseModel
+/**
+ * Product Class
+ */
+class Product extends AbstractModel
 {
+    /**
+     * Product GTIN/EAN13 Number
+     *
+     * @var string
+     */
     protected $_gtin;
+
+    /**
+     * Product Tesco Product Number Base (TPNB) number
+     *
+     * @var string
+     */
     protected $_tpnb;
+
+    /**
+     * Product Tesco Product Number Consumer (TPNC) number
+     *
+     * @var string
+     */
     protected $_tpnc;
+
+    /**
+     * Product Description
+     *
+     * @var string
+     */
     protected $_description;
+
+    /**
+     * Product Brand Name
+     *
+     * @var string
+     */
     protected $_brand;
+
+    /**
+     * Product Quantity
+     *
+     * @var int
+     */
     protected $_quantity;
+
+    /**
+     * Product Total Quantity
+     *
+     * @var int
+     */
     protected $_totalQuantity;
+
+    /**
+     * Product Quantity Unit of Measure
+     *
+     * @var string
+     */
     protected $_unitOfMeasure;
+
+    /**
+     * Product Net Contents
+     *
+     * @var string
+     */
     protected $_netContents;
+
+    /**
+     * Product Average Measure
+     *
+     * @var string
+     */
     protected $_averageMeasure;
+
+    /**
+     * Product is Food?
+     *
+     * @var bool
+     */
     protected $_isFood;
+
+    /**
+     * Product is Drink?
+     *
+     * @var bool
+     */
     protected $_isDrink;
+
+    /**
+     * Product is Hazardous?
+     *
+     * @var bool
+     */
     protected $_isHazardous;
-    protected $_storageType;
+
+    /**
+     * Product is Non Liquid Analgesic?
+     *
+     * @var bool
+     */
     protected $_isNonLiquidAnalgesic;
+
+    /**
+     * Product contains Loperamide?
+     *
+     * @var bool
+     */
     protected $_containsLoperamide;
+
+    /**
+     * Product Storage Type
+     *
+     * @var string
+     */
+    protected $_storageType;
+
+    /**
+     * Product Width
+     *
+     * @var float
+     */
     protected $_width;
+
+    /**
+     * Product Height
+     *
+     * @var float
+     */
     protected $_height;
+
+    /**
+     * Product Depth
+     *
+     * @var float
+     */
     protected $_depth;
+
+    /**
+     * Product Dimension Unit of Measure
+     *
+     * @var string
+     */
     protected $_dimensionUnitOfMeasure;
+
+    /**
+     * Product Weight
+     *
+     * @var float
+     */
     protected $_weight;
+
+    /**
+     * Product Weight Unit of Measurement
+     *
+     * @var string
+     */
     protected $_weightUnitOfMeasure;
+
+    /**
+     * Product Volume
+     *
+     * @var float
+     */
     protected $_volume;
+
+    /**
+     * Product Volume Unit of measure
+     *
+     * @var string
+     */
     protected $_volumeUnitOfMeasure;
+
+    /**
+     * Product GDA Values
+     *
+     * @var Gda[]
+     */
     protected $_gdas;
+
+    /**
+     * Product Nutrition Values
+     *
+     * @var Nutrition[]
+     */
     protected $_nutrition;
+
+    /**
+     * Product Ingredients
+     *
+     * @var array
+     */
     protected $_ingredients;
 
+    /**
+     * @inheritDoc
+     *
+     * @var array
+     */
     protected $_dataMap = [
         'gtin' => 'gtin',
         'tpnb' => 'tpnb',
@@ -74,138 +245,355 @@ class Product extends BaseModel
         parent::__construct($dataset);
     }
 
-    protected function setIsFood(bool $value)
+    /**
+     * Set Product isFood value
+     *
+     * @param boolean $value
+     * @return void
+     */
+    protected function setIsFood(bool $value): void
     {
         $this->_isFood = $value;
     }
 
-    protected function setIsDrink(bool $value)
+    /**
+     * Set Product isDrink value
+     *
+     * @param boolean $value
+     * @return void
+     */
+    protected function setIsDrink(bool $value): void
     {
         $this->_isDrink = $value;
     }
 
-    protected function setIsHazardous(bool $value)
+    /**
+     * Set product isHazardous value
+     *
+     * @param boolean $value
+     * @return void
+     */
+    protected function setIsHazardous(bool $value): void
     {
         $this->_isHazardous = $value;
     }
 
-    protected function setIsNonLiquidAnalgesic(bool $value)
+    /**
+     * Set Product isNonLiquidAnalgesic value
+     *
+     * @param boolean $value
+     * @return void
+     */
+    protected function setIsNonLiquidAnalgesic(bool $value): void
     {
         $this->_isNonLiquidAnalgesic = $value;
     }
 
-    protected function setContainsLoperamide(bool $value)
+    /**
+     * Set Product containsLoperamide value
+     *
+     * @param boolean $value
+     * @return void
+     */
+    protected function setContainsLoperamide(bool $value): void
     {
         $this->_containsLoperamide = $value;
     }
 
-    public function getGtinNumber()
+    /**
+     * Set Product GDAs
+     *
+     * @param array $references
+     * @return void
+     */
+    protected function setGdaReferences(array $references): void
+    {
+        foreach ($references as $gda) {
+            $this->_gdas[] = new Gda($gda);
+        }
+    }
+
+    /**
+     * Set Product Nutrition values
+     *
+     * @param array $values
+     * @return void
+     */
+    protected function setNutritionValues(array $values): void
+    {
+        foreach ($values as $value) {
+            $this->_nutrition[] = new Nutrition($value);
+        }
+    }
+
+    /**
+     * Get Product GTIN Number
+     *
+     * @return string
+     */
+    public function getGtinNumber(): string
     {
         return $this->_gtin;
     }
 
-    public function getTpnbNumber()
+    /**
+     * Get Product TPNB Number
+     *
+     * @return string
+     */
+    public function getTpnbNumber(): string
     {
         return $this->_tpnb;
     }
 
-    public function getTpncNumber()
+    /**
+     * Get Product TPNC Number
+     *
+     * @return string
+     */
+    public function getTpncNumber(): string
     {
         return $this->_tpnc;
     }
 
-    public function getDescription()
+    /**
+     * Get Product Description
+     *
+     * @return string
+     */
+    public function getDescription(): string
     {
         return $this->_description;
     }
 
-    public function getBrand()
+    /**
+     * Get Product Brand name
+     *
+     * @return string
+     */
+    public function getBrand(): string
     {
         return $this->_brand;
     }
 
-    public function getQuantity()
+    /**
+     * Get Product Quantity
+     *
+     * @return integer
+     */
+    public function getQuantity(): int
     {
         return $this->_quantity;
     }
 
-    public function getTotalQuantity()
+    /**
+     * Get Product Total Quantity
+     *
+     * @return integer
+     */
+    public function getTotalQuantity(): int
     {
         return $this->_totalQuantity;
     }
 
-    public function getUnitOfMeasure()
+    /**
+     * Get Quantity Unit of Measure
+     *
+     * @return string
+     */
+    public function getUnitOfMeasure(): string
     {
         return $this->_unitOfMeasure;
     }
 
-    public function getNetContents()
+    /**
+     * Get Product Net Contents
+     *
+     * @return string
+     */
+    public function getNetContents(): string
     {
         return $this->_netContents;
     }
 
-    public function getAverageMeasure()
+    /**
+     * Get Product Average Measure
+     *
+     * @return string
+     */
+    public function getAverageMeasure(): string
     {
         return $this->_averageMeasure;
     }
 
-    public function isFood()
+    /**
+     * Is this Product a Food item?
+     *
+     * @return boolean
+     */
+    public function isFood(): bool
     {
         return $this->_isFood;
     }
 
-    public function isDrink()
+    /**
+     * Is this Product a Drink item?
+     *
+     * @return boolean
+     */
+    public function isDrink(): bool
     {
         return $this->_isDrink;
     }
 
-    public function isHazardous()
+    /**
+     * Is this Product Hazardous?
+     *
+     * @return boolean
+     */
+    public function isHazardous(): bool
     {
         return $this->_isHazardous;
     }
 
-    public function isNonLiquidAnalgesic()
+    /**
+     * Is this Product Non Liquid Analgesic?
+     *
+     * @return boolean
+     */
+    public function isNonLiquidAnalgesic(): bool
     {
         return $this->_isNonLiquidAnalgesic;
     }
 
-    public function getStorageType()
+    /**
+     * Get Product Storage Type
+     *
+     * @return string
+     */
+    public function getStorageType(): string
     {
         return $this->_storageType;
     }
 
-    public function containsLoperamide()
+    /**
+     * Does this Product contain Loperamide?
+     *
+     * @return boolean
+     */
+    public function containsLoperamide(): bool
     {
         return $this->_containsLoperamide;
     }
 
-    public function getWidth(bool $withUnits = true)
+    /**
+     * Get Product Width
+     *
+     * @return float
+     */
+    public function getWidth(): float
     {
-        return $this->_width . ($withUnits ? $this->_dimensionUnitOfMeasure : '');
+        return $this->_width;
     }
 
-    public function getHeight(bool $withUnits = true)
+    /**
+     * Get Product Height
+     *
+     * @return float
+     */
+    public function getHeight(): float
     {
-        return $this->_height . ($withUnits ? $this->_dimensionUnitOfMeasure : '');
+        return $this->_height;
     }
 
-    public function getDepth(bool $withUnits = true)
+    /**
+     * Get Produtc Depth
+     *
+     * @return float
+     */
+    public function getDepth(): float
     {
-        return $this->_depth . ($withUnits ? $this->_dimensionUnitOfMeasure : '');
+        return $this->_depth;
     }
 
-    public function getDimensionString()
+    /**
+     * Get Product Width with Measurement
+     *
+     * @return string
+     */
+    public function getWidthWithMeasurement(): string
+    {
+        return $this->getWidth() . $this->_dimensionUnitOfMeasure;
+    }
+
+    /**
+     * Get Product Height with Measurement
+     *
+     * @return string
+     */
+    public function getHeightWithMeasurement(): string
+    {
+        return $this->getHeight() . $this->_dimensionUnitOfMeasure;
+    }
+
+    /**
+     * Get Product Depth with Measurement
+     *
+     * @return string
+     */
+    public function getDepthWithMeasurement(): string
+    {
+        return $this->getDepth() . $this->_dimensionUnitOfMeasure;
+    }
+
+    /**
+     * Get Product Dimensions as a string
+     * W{width}xH{height}xD{depth}{measurement} => eg W12xH15xD27cm
+     *
+     * @return string
+     */
+    public function getDimensionsString(): string
     {
         return "W{$this->_width}xH{$this->_height}xD{$this->_depth}{$this->_dimensionUnitOfMeasure}";
     }
 
-    public function getWeight(bool $withUnits = true)
+    /**
+     * Get Product Weight
+     *
+     * @return float
+     */
+    public function getWeight(): float
     {
-        return $this->_weight . ($withUnits ? $this->_weightUnitOfMeasure : '');
+        return $this->_weight;
     }
 
-    public function getVolume(bool $withUnits = true)
+    /**
+     * Get Product Volume
+     *
+     * @return float
+     */
+    public function getVolume(): float
     {
-        return $this->_volume . ($withUnits ? $this->_volumeUnitOfMeasure : '');
+        return $this->_volume;
+    }
+
+    /**
+     * Get Product Weight with Measurement
+     *
+     * @return string
+     */
+    public function getWeightWithMeasurement(): string
+    {
+        return $this->getWeight() . $this->_weightUnitOfMeasure;
+    }
+
+    /**
+     * Get Product Volume with Measurement
+     *
+     * @return string
+     */
+    public function getVolumeWithMeasurement(): string
+    {
+        return $this->getVolume() . $this->_volumeUnitOfMeasure;
     }
 }

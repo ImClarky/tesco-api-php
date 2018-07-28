@@ -2,16 +2,35 @@
 
 namespace ImClarky\TescoApi\Models;
 
+/**
+ * Abstract Model Class
+ */
 abstract class AbstractModel
 {
+    /**
+     * Map of Data point to Variable
+     *
+     * @var array
+     */
     protected $_dataMap = [];
 
+    /**
+     * Model Constructor
+     *
+     * @param array $dataset
+     */
     public function __construct(array $dataset)
     {
         $this->mapData($dataset);
     }
 
-    protected function mapData($dataset)
+    /**
+     * Map Datapoints to Variables
+     *
+     * @param [type] $dataset
+     * @return void
+     */
+    protected function mapData(array $dataset): void
     {
         foreach ($dataset as $key => $value) {
             if (is_array($value)) {

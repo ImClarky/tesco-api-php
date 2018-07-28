@@ -23,7 +23,7 @@ class StoreLocationResponse extends AbstractResponse
     /**
      * @inheritDoc
      */
-    protected function populateModels()
+    protected function populateModels(): void
     {
         foreach ($this->_data['results'] as $store) {
             $this->_models[] = new Store($store);

@@ -34,7 +34,7 @@ abstract class AbstractFilterable
      * @return string
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    public function buildQuerySegment()
+    public function buildQuerySegment(): string
     {
         $params = [];
         foreach ($this->_filters as $filter => $values) {

@@ -2,13 +2,44 @@
 
 namespace ImClarky\TescoApi\Models\Store;
 
+/**
+ * Opening Times Class
+ */
 class OpeningTime
 {
+    /**
+     * 2 character Day of the Week
+     *
+     * @var string
+     */
     protected $_dayOfWeek;
+
+    /**
+     * Is the entity Open for this Opening Time
+     *
+     * @var boolean
+     */
     protected $_isOpen;
+
+    /**
+     * Opening Time
+     *
+     * @var int
+     */
     protected $_openingTime;
+
+    /**
+     * Clasing Time
+     *
+     * @var int
+     */
     protected $_closingTime;
 
+    /**
+     * Numeric Representation of Days
+     *
+     * @var array
+     */
     protected static $_numericDays = [
         "mo" => 1,
         "tu" => 2,
@@ -19,6 +50,11 @@ class OpeningTime
         "su" => 7,
     ];
 
+    /**
+     * String Representation of Days
+     *
+     * @var array
+     */
     protected static $_stringDays = [
         "mo" => "Monday",
         "tu" => "Tuesday",
@@ -29,7 +65,13 @@ class OpeningTime
         "su" => "Sunday",
     ];
 
-    public function __construct($dayOfWeek, $data)
+    /**
+     * Opening Time Constructor
+     *
+     * @param string $dayOfWeek
+     * @param array $data
+     */
+    public function __construct(string $dayOfWeek, array $data)
     {
         $this->setDayOfWeek($dayOfWeek);
         $this->setIsOpen($data['isOpen']);
@@ -40,52 +82,107 @@ class OpeningTime
         }
     }
 
-    protected function setDayOfWeek(string $dayOfWeek)
+    /**
+     * Set the Day of the Week
+     *
+     * @param string $dayOfWeek
+     * @return void
+     */
+    protected function setDayOfWeek(string $dayOfWeek): void
     {
         $this->_dayOfWeek = $dayOfWeek;
     }
 
-    protected function setIsOpen(string $isOpen)
+    /**
+     * Set the Open status
+     *
+     * @param string $isOpen
+     * @return void
+     */
+    protected function setIsOpen(string $isOpen): void
     {
         $this->_isOpen = $isOpen === "true";
     }
 
-    protected function setOpeningTime(string $time)
+    /**
+     * Set the Opening Time
+     *
+     * @param string $time
+     * @return void
+     */
+    protected function setOpeningTime(string $time): void
     {
         $this->_openingTime = $time;
     }
 
-    protected function setClosingTime(string $time)
+    /**
+     * Set the Closing Time
+     *
+     * @param string $time
+     * @return void
+     */
+    protected function setClosingTime(string $time): void
     {
         $this->_closingTime = $time;
     }
 
-    public function getDayOfWeek()
+    /**
+     * Get the 2 Character Day of the Week
+     *
+     * @return string
+     */
+    public function getDayOfWeek(): string
     {
         return $this->_dayOfWeek;
     }
 
-    public function getNumericDayOfWeek()
+    /**
+     * Get the Numeric Day of the Week
+     * Monday = 1; Sunday = 7
+     *
+     * @return integer
+     */
+    public function getNumericDayOfWeek(): int
     {
         return static::$_numericDays[$this->_dayOfWeek];
     }
 
-    public function getTextDayOfWeek()
+    /**
+     * Get the Text version of the Day of the Week
+     *
+     * @return string
+     */
+    public function getTextDayOfWeek(): string
     {
         return static::$_stringDays[$this->_dayOfWeek];
     }
 
-    public function getOpeningTime()
+    /**
+     * Get the Opening Time
+     *
+     * @return integer
+     */
+    public function getOpeningTime(): int
     {
         return $this->_openingTime;
     }
 
-    public function getClosingTime()
+    /**
+     * Get the Closing Time
+     *
+     * @return integer
+     */
+    public function getClosingTime(): int
     {
         return $this->_closingTime;
     }
 
-    public function isOpen()
+    /**
+     * Is the entity Open
+     *
+     * @return boolean
+     */
+    public function isOpen(): bool
     {
         return $this->_isOpen;
     }

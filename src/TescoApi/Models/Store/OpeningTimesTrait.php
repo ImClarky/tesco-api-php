@@ -6,6 +6,9 @@ use ImClarky\TescoApi\Models\Store\OpeningTime;
 use ImClarky\TescoApi\Models\Store\OpeningTimeException;
 use DateTime;
 
+/**
+ * Opening Times Trait
+ */
 trait OpeningTimesTrait
 {
     /**
@@ -31,7 +34,7 @@ trait OpeningTimesTrait
      * @return void
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    protected function setOpeningTimes(array $times)
+    protected function setOpeningTimes(array $times): void
     {
         foreach ($times as $dow => $info) {
             $this->_openingTimes[] = new OpeningTime($dow, $info);
@@ -45,7 +48,7 @@ trait OpeningTimesTrait
      * @return void
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    protected function setOpeningTimeExceptions(array $times)
+    protected function setOpeningTimeExceptions(array $times): void
     {
         foreach ($times as $info) {
             $this->_openingTimeExceptions[] = new OpeningTimeException($info);
@@ -57,7 +60,7 @@ trait OpeningTimesTrait
      *
      * @return array
      */
-    public function getOpeningTimes()
+    public function getOpeningTimes(): array
     {
         return $this->_openingTimes;
     }
@@ -67,7 +70,7 @@ trait OpeningTimesTrait
      *
      * @return array
      */
-    public function getOpeningTimesExceptions()
+    public function getOpeningTimesExceptions(): array
     {
         return $this->_openingTimeExceptions;
     }
@@ -78,10 +81,10 @@ trait OpeningTimesTrait
      * @param DateTime $datetime The date to check
      * @return boolean
      */
-    public function isOpenOn(DateTime $datetime)
+    public function isOpenOn(DateTime $datetime): bool
     {
         $date = $this->getOpeningTimeByDate($datetime);
-        return $date->isOpen();
+        return $date ? $date->isOpen() : false;
     }
 
     /**
@@ -89,7 +92,7 @@ trait OpeningTimesTrait
      *
      * @return boolean
      */
-    public function isOpenNow()
+    public function isOpenNow(): bool
     {
         $now = new DateTime();
 
@@ -99,7 +102,7 @@ trait OpeningTimesTrait
 
         $time = $now->format('Hi');
 
-        return $openingTime->isOpen()
+        return $openingTime && $openingTime->isOpen()
             ? ($openingTime->getOpeningTime() < $time && $openingTime->getClosingTime() > $time)
             : false;
     }
@@ -110,7 +113,7 @@ trait OpeningTimesTrait
      * @param DateTime $date The date to check
      * @return boolean
      */
-    protected function isDateInExceptions(DateTime $date)
+    protected function isDateInExceptions(DateTime $date): bool
     {
         $isoDate = $date->format('Y-m-d');
 
@@ -129,7 +132,7 @@ trait OpeningTimesTrait
      * @param DateTime $date The date to get
      * @return ImClarky\TescoApi\Models\Store\OpeningTimeException|boolean
      */
-    protected function getOpeningTimeExceptionByDate(DateTime $date)
+    protected function getOpeningTimeExceptionByDate(DateTime $date): OpeningTimeException
     {
         $isoDate = $date->format('Y-m-d');
 
@@ -148,7 +151,7 @@ trait OpeningTimesTrait
      * @param DateTime $date The date to get
      * @return ImClarky\TescoApi\Models\Store\OpeningTime|boolean
      */
-    protected function getOpeningTimeByDate(DateTime $date)
+    protected function getOpeningTimeByDate(DateTime $date): OpeningTime
     {
         $isoDayOfWeek = $date->format('N');
 

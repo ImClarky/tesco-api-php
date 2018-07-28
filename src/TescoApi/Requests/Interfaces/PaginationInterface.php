@@ -2,6 +2,9 @@
 
 namespace ImClarky\TescoApi\Requests\Interfaces;
 
+use ImClarky\TescoApi\Responses\AbstractResponse;
+use ImClarky\TescoApi\Requests\AbstractRequest;
+
 /**
  * Pagination Interface
  *
@@ -12,43 +15,43 @@ interface PaginationInterface
     /**
      * Get the next page of results
      *
-     * @return ImClarky\TescoApi\Responses\AbstractResponse
+     * @return AbstractResponse
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    public function getNextPage();
+    public function getNextPage(): AbstractResponse;
 
     /**
      * Get the previous page of results
      *
-     * @return ImClarky\TescoApi\Responses\AbstractResponse
+     * @return AbstractResponse
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    public function getPrevPage();
+    public function getPrevPage(): AbstractResponse;
 
     /**
      * Go to a spacific page of results
      *
      * @param integer $page
-     * @return ImClarky\TescoApi\Responses\AbstractResponse
+     * @return AbstractResponse
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    public function goToPage(int $page);
+    public function goToPage(int $page): AbstractResponse;
 
     /**
      * Set the request Limit
      *
      * @param integer $limit
-     * @return ImClarky\TescoApi\Requests\AbstractRequest
+     * @return AbstractRequest
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    public function setLimit(int $limit);
+    public function setLimit(int $limit): AbstractRequest;
 
     /**
      * Set the request Offset
      *
      * @param integer $offset
-     * @return ImClarky\TescoApi\Requests\AbstractRequest
+     * @return AbstractRequest
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    public function setOffset(int $offset);
+    public function setOffset(int $offset): AbstractRequest;
 }

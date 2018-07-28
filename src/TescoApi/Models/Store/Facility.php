@@ -2,9 +2,11 @@
 
 namespace ImClarky\TescoApi\Models\Store;
 
-use ImClarky\TescoApi\Models\Store\OpeningTime;
 use ImClarky\TescoApi\Models\Store\OpeningTimesTrait;
 
+/**
+ * Store Facility Class
+ */
 class Facility
 {
     use OpeningTimesTrait;
@@ -100,11 +102,21 @@ class Facility
     const WIFI = 'WIFI';
     const WORLD_FOOD = 'WORLD_FOOD';
 
+    /**
+     * Facility Tags
+     * NOTE: This may not be the full list
+     *       If you find one I've missed, please submit a PR
+     */
     const TAG_PUBLIC = 'public';
     const TAG_REFURBISHED = 'refurbished';
     const TAG_FOODRANGE = 'food_range';
     const TAG_ENABLING = 'enabling';
 
+    /**
+     * Facility Constructor
+     *
+     * @param array $dataset
+     */
     public function __construct(array $dataset)
     {
         $this->setName($dataset['name']);
@@ -119,18 +131,77 @@ class Facility
         }
     }
 
-    protected function setName(string $name)
+    /**
+     * Set the Facility Name
+     *
+     * @param string $name
+     * @return void
+     */
+    protected function setName(string $name): void
     {
         $this->_name = $name;
     }
 
-    protected function setDescription(string $description)
+    /**
+     * Set the Facility Description
+     *
+     * @param string $description
+     * @return void
+     */
+    protected function setDescription(string $description): void
     {
         $this->_description = $description;
     }
 
-    protected function setTags(array $tags)
+    /**
+     * Set the Facility Tags
+     *
+     * @param array $tags
+     * @return void
+     */
+    protected function setTags(array $tags): void
     {
         $this->_tags = $tags;
+    }
+
+    /**
+     * Get Facility Name
+     *
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->_name;
+    }
+
+    /**
+     * Get Facility Description
+     *
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return  $this->_description;
+    }
+
+    /**
+     * Get Facility Tags
+     *
+     * @return array
+     */
+    public function getTags(): array
+    {
+        return $this->_tags;
+    }
+
+    /**
+     * Does this facility have a certain tag?
+     *
+     * @param string $tag
+     * @return boolean
+     */
+    public function hasTag(string $tag): bool
+    {
+        return in_array($tag, $this->_tags);
     }
 }

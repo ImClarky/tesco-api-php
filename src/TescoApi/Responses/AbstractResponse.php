@@ -82,7 +82,7 @@ abstract class AbstractResponse
      * @param string $headers
      * @return void
      */
-    protected function setHeaders($headers)
+    protected function setHeaders($headers): void
     {
         $lines = explode(PHP_EOL, $headers);
 
@@ -108,7 +108,7 @@ abstract class AbstractResponse
      * @param string $headers
      * @return void
      */
-    protected function setStatus($headers)
+    protected function setStatus($headers): void
     {
         preg_match(self::STATUS_REGEX, $headers, $matches);
 
@@ -121,7 +121,7 @@ abstract class AbstractResponse
      *
      * @return integer
      */
-    public function getStatusCode()
+    public function getStatusCode(): int
     {
         return $this->_statusCode;
     }
@@ -131,7 +131,7 @@ abstract class AbstractResponse
      *
      * @return string
      */
-    public function getStatusMessage()
+    public function getStatusMessage(): string
     {
         return $this->_statusMessage;
     }
@@ -141,7 +141,7 @@ abstract class AbstractResponse
      *
      * @return array
      */
-    public function getModels()
+    public function getModels(): array
     {
         return $this->_models;
     }
@@ -151,5 +151,5 @@ abstract class AbstractResponse
      *
      * @return void
      */
-    protected abstract function populateModels();
+    protected abstract function populateModels(): void;
 }

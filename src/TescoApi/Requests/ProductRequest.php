@@ -64,7 +64,7 @@ class ProductRequest extends AbstractRequest
      * @return self
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    public function addGtin(string $gtin)
+    public function addGtin(string $gtin): self
     {
         $this->_gtin[] = $gtin;
         return $this;
@@ -77,7 +77,7 @@ class ProductRequest extends AbstractRequest
      * @return self
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    public function addTpnb(string $tnpb)
+    public function addTpnb(string $tnpb): self
     {
         $this->_tpnb[] = $tnpb;
         return $this;
@@ -90,7 +90,7 @@ class ProductRequest extends AbstractRequest
      * @return self
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    public function addTpnc(string $tpnc)
+    public function addTpnc(string $tpnc): self
     {
         $this->_tpnc[] = $tpnc;
         return $this;
@@ -103,7 +103,7 @@ class ProductRequest extends AbstractRequest
      * @return self
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    public function addCatId(string $catId)
+    public function addCatId(string $catId): self
     {
         $this->_catId[] = $catId;
         return $this;
@@ -112,7 +112,7 @@ class ProductRequest extends AbstractRequest
     /**
      * @inheritDoc
      */
-    protected function buildQueryString()
+    protected function buildQueryString(): void
     {
         $typeList = [
             'gtin' => $this->_gtin,
@@ -139,10 +139,10 @@ class ProductRequest extends AbstractRequest
     /**
      * Create a new Response Instance
      *
-     * @return ImClarky\TescoApi\Responses\ProductResponse
+     * @return ProductResponse
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    protected function resolveResponse()
+    protected function resolveResponse(): ProductResponse
     {
         return new ProductResponse($this->_result);
     }

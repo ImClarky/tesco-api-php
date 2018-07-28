@@ -24,10 +24,10 @@ class Filter extends AbstractFilterable
      *
      * @param string $type
      * @param mixed $value
-     * @return ImClarky\TescoApi\Requests\AbstractRequest
+     * @return AbstractRequest
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    public function addOption(string $type, $value)
+    public function addOption(string $type, $value): AbstractRequest
     {
         if (array_key_exists($type, $this->_filters)) {
             $this->_filters[$type][] = $value;

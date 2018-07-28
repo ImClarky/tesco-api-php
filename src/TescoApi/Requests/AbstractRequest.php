@@ -76,10 +76,10 @@ abstract class AbstractRequest
     /**
      * Send our API request
      *
-     * @return ImClarky\TescoApi\Responses\AbstractResponse
+     * @return AbstractResponse
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    public function send()
+    public function send(): AbstractResponse
     {
         $this->buildQueryString();
         $this->setCurlOptions();
@@ -102,7 +102,7 @@ abstract class AbstractRequest
      * @return void
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    private function setCurlOptions()
+    private function setCurlOptions(): void
     {
         $options = [
             CURLOPT_URL => $this->getRequestUri(),
@@ -124,7 +124,7 @@ abstract class AbstractRequest
      * @return string
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    private function getRequestUri()
+    private function getRequestUri(): string
     {
         return static::BASEURL . $this->_uri . $this->_queryString;
     }
@@ -135,13 +135,13 @@ abstract class AbstractRequest
      * @return void
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    protected abstract function buildQueryString();
+    protected abstract function buildQueryString(): void;
 
     /**
      * Resolve the response from the cURL request to a Response object
      *
-     * @return ImClarky\TescoApi\Responses\AbstractResponse
+     * @return AbstractResponse
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    protected abstract function resolveResponse();
+    protected abstract function resolveResponse(): AbstractResponse;
 }

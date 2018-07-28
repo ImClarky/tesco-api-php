@@ -23,7 +23,7 @@ class ProductResponse extends AbstractResponse
     /**
      * @inheritDoc
      */
-    protected function populateModels()
+    protected function populateModels(): void
     {
         foreach ($this->_data['products'] as $product) {
             $this->_models[] = new Product($product);

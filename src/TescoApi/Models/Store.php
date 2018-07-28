@@ -2,7 +2,7 @@
 
 namespace ImClarky\TescoApi\Models;
 
-use ImClarky\TescoApi\Models\AbstractModel as BaseModel;
+use ImClarky\TescoApi\Models\AbstractModel;
 use ImClarky\TescoApi\Models\Store\Facility;
 use ImClarky\TescoApi\Models\Store\OpeningTimesTrait;
 
@@ -11,7 +11,7 @@ use ImClarky\TescoApi\Models\Store\OpeningTimesTrait;
  *
  * @author Sean Clark <seandclark94@gmail.com>
  */
-class Store extends BaseModel
+class Store extends AbstractModel
 {
     use OpeningTimesTrait;
 
@@ -134,6 +134,11 @@ class Store extends BaseModel
      */
     protected $_facilities = [];
 
+    /**
+     * @inheritDoc
+     *
+     * @var array
+     */
     protected $_dataMap = [
         'id' => 'id',
         'name' => 'name',
@@ -179,10 +184,29 @@ class Store extends BaseModel
         parent::__construct($dataset);
     }
 
-    protected function setFacilities(array $facilities)
+    /**
+     * Set the Store Facilities
+     *
+     * @param array $facilities
+     * @return void
+     */
+    protected function setFacilities(array $facilities): void
     {
         foreach ($facilities as $facility) {
             $this->_facilities[] = new Facility($facility);
+        }
+    }
+
+    /**
+     * Set the Store Address lines
+     *
+     * @param array $lines
+     * @return void
+     */
+    protected function setAddressLines(array $lines): void
+    {
+        foreach ($lines as $line) {
+            $this->{'_addrLine' . $line['lineNumber']} = $line['text'];
         }
     }
 
@@ -191,7 +215,7 @@ class Store extends BaseModel
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->_name;
     }
@@ -201,7 +225,7 @@ class Store extends BaseModel
      *
      * @return integer
      */
-    public function getBranchNumber()
+    public function getBranchNumber(): int
     {
         return $this->_branchNumber;
     }
@@ -211,7 +235,7 @@ class Store extends BaseModel
      *
      * @return string
      */
-    public function getIsoCountryCode()
+    public function getIsoCountryCode(): string
     {
         return $this->_isoCountryCode;
     }
@@ -221,7 +245,7 @@ class Store extends BaseModel
      *
      * @return string
      */
-    public function getAddressLine1()
+    public function getAddressLine1(): string
     {
         return $this->_addrLine1;
     }
@@ -231,7 +255,7 @@ class Store extends BaseModel
      *
      * @return string
      */
-    public function getAddressLine2()
+    public function getAddressLine2(): string
     {
         return $this->_addrLine2;
     }
@@ -241,7 +265,7 @@ class Store extends BaseModel
      *
      * @return string
      */
-    public function getAddressTown()
+    public function getAddressTown(): string
     {
         return $this->_addrTown;
     }
@@ -251,7 +275,7 @@ class Store extends BaseModel
      *
      * @return string
      */
-    public function getAddressPostcode()
+    public function getAddressPostcode(): string
     {
         return $this->_addrPostcode;
     }
@@ -261,7 +285,7 @@ class Store extends BaseModel
      *
      * @return string
      */
-    public function getFullAddress()
+    public function getFullAddress(): string
     {
         return "{$this->getAddressLine1()},
                 {$this->getAddressLine2()},
@@ -274,7 +298,7 @@ class Store extends BaseModel
      *
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->_type;
     }
@@ -286,7 +310,7 @@ class Store extends BaseModel
      * @return boolean
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    public function isType(string $type)
+    public function isType(string $type): bool
     {
         return $this->_type === $type;
     }
@@ -296,7 +320,7 @@ class Store extends BaseModel
      *
      * @return string
      */
-    public function getCategory()
+    public function getCategory(): string
     {
         return $this->_category;
     }
@@ -308,7 +332,7 @@ class Store extends BaseModel
      * @return boolean
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    public function isCategory(string $category)
+    public function isCategory(string $category): bool
     {
         return $this->_category === $category;
     }
@@ -318,7 +342,7 @@ class Store extends BaseModel
      *
      * @return float
      */
-    public function getLatitude()
+    public function getLatitude(): float
     {
         return $this->_geoLatitude;
     }
@@ -328,7 +352,7 @@ class Store extends BaseModel
      *
      * @return float
      */
-    public function getLongitude()
+    public function getLongitude(): float
     {
         return $this->_geoLongitude;
     }
@@ -338,7 +362,7 @@ class Store extends BaseModel
      *
      * @return string
      */
-    public function getGeoCoordinates()
+    public function getGeoCoordinates(): string
     {
         return "{$this->getLatitude()}, {$this->getLongitude()}";
     }
@@ -348,7 +372,7 @@ class Store extends BaseModel
      *
      * @return string
      */
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this->_status;
     }
@@ -358,7 +382,7 @@ class Store extends BaseModel
      *
      * @return string
      */
-    public function getDistance()
+    public function getDistance(): string
     {
         return "{$this->_distanceValue} " . ucwords($this->_distanceMeasurement);
     }
@@ -372,7 +396,7 @@ class Store extends BaseModel
      * @param string $type The type of facility
      * @return boolean
      */
-    public function hasFacility(string $type)
+    public function hasFacility(string $type): bool
     {
         foreach ($this->facilities as $facility) {
             if ($facility->getName() === $type) {
@@ -396,7 +420,7 @@ class Store extends BaseModel
      * @param array $facilities
      * @return boolean
      */
-    public function hasFacilities(array $facilities)
+    public function hasFacilities(array $facilities): bool
     {
         if (empty($facilities)) {
             return false;
@@ -416,7 +440,7 @@ class Store extends BaseModel
      *
      * @return array
      */
-    public function getFacilities()
+    public function getFacilities(): array
     {
         return $this->_facilities;
     }
