@@ -100,6 +100,11 @@ class Facility
     const WIFI = 'WIFI';
     const WORLD_FOOD = 'WORLD_FOOD';
 
+    const TAG_PUBLIC = 'public';
+    const TAG_REFURBISHED = 'refurbished';
+    const TAG_FOODRANGE = 'food_range';
+    const TAG_ENABLING = 'enabling';
+
     public function __construct(array $dataset)
     {
         $this->setName($dataset['name']);

@@ -69,7 +69,7 @@ class Gda
      * @return void
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    protected function setName(string $name)
+    protected function setName(string $name): void
     {
         $this->_name = $name;
     }
@@ -81,7 +81,7 @@ class Gda
      * @return void
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    protected function setValues(array $values)
+    protected function setValues(array $values): void
     {
         $this->_values = $values;
     }
@@ -93,7 +93,7 @@ class Gda
      * @return void
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    protected function setPercent(int $percent)
+    protected function setPercent(int $percent): void
     {
         $this->_percent = $percent;
     }
@@ -105,8 +105,64 @@ class Gda
      * @return void
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    protected function setRating(string $rating)
+    protected function setRating(string $rating): void
     {
         $this->_rating = $rating;
+    }
+
+    /**
+     * Get the GDA Nutrient name
+     *
+     * @return string
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function getName(): string
+    {
+        return $this->_name;
+    }
+
+    /**
+     * Get the values of the GDA Nutrient
+     *
+     * @return array
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function getValues(): array
+    {
+        return $this->_values;
+    }
+
+    /**
+     * Get the RDI percent of the the GDA Nutrient
+     *
+     * @return integer
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function getPercent(): int
+    {
+        return $this->_percent;
+    }
+
+    /**
+     * Get the rating of the GDA Nutrient
+     *
+     * @return string
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function getRating(): string
+    {
+        return $this->_rating;
+    }
+
+    /**
+     * Is this GDA a cenrtain rating
+     *
+     * @param string $rating
+     * @return boolean
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function isRating(string $rating): bool
+    {
+        return $this->_rating === $rating;
     }
 }

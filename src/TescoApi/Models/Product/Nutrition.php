@@ -2,9 +2,7 @@
 
 namespace ImClarky\TescoApi\Models\Product;
 
-use ImClarky\TescoApi\Models\AbstractModel as BaseModel;
-
-class Nutrition extends BaseModel
+class Nutrition
 {
     protected $_name;
     protected $_valuePer100;
@@ -17,17 +15,17 @@ class Nutrition extends BaseModel
         $this->setValuePerServing()($dataset['valuePerServing']);
     }
 
-    protected function setName(string $name)
+    protected function setName(string $name): void
     {
         $this->_name = $name;
     }
 
-    protected function setValuePer100(float $value)
+    protected function setValuePer100(float $value): void
     {
         $this->_valuePer100 = $value;
     }
 
-    protected function setValuePerServing(float $value)
+    protected function setValuePerServing(float $value): void
     {
         $this->_valuePerServing = $value;
     }
