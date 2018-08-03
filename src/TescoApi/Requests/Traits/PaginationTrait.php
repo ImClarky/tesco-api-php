@@ -2,41 +2,108 @@
 
 namespace ImClarky\TescoApi\Requests\Traits;
 
+/**
+ * Pagination trait
+ *
+ * @author Sean Clark <sean.clark@d3r.com>
+ */
 trait PaginationTrait
 {
+    /**
+     * How many results to fetch
+     *
+     * @var integer
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
     protected $_limit = 10;
+
+    /**
+     * How many results to offset by
+     *
+     * @var integer
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
     protected $_offset = 0;
 
-    public function getNextPage()
+    /**
+     * @inheritDoc
+     *
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function getNextPage(): AbstractResponse
     {
+        $this->_offest = $this->getOffset() + $this->getLimit();
 
+        return $this->send();
     }
 
-    public function getPrevPage()
+    /**
+     * @inheritDoc
+     *
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function getPrevPage(): AbstractResponse
     {
         if ($this->_offset > 0) {
-            $this->_offset = max($this->_offset - $this->_limit, 0);
+            $this->_offset = max($this->getOffset() - $this->getLimit(), 0);
         }
 
-        $this->send();
+        return $this->send();
     }
 
-    public function goToPage(int $page)
+    /**
+     * @inheritDoc
+     *
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function goToPage(int $page): AbstractResponse
     {
-        $this->_offset = $this->_limit * ($page - 1);
+        $this->_offset = $this->getLimit() * ($page - 1);
 
-        $this->send();
+        return $this->send();
     }
 
-    public function setLimit(int $limit)
+    /**
+     * @inheritDoc
+     *
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function setLimit(int $limit): self
     {
         $this->_limit = $limit;
         return $this;
     }
 
-    public function setOffset(int $offset)
+    /**
+     * @inheritDoc
+     *
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function setOffset(int $offset): self
     {
         $this->_offset = $offset;
         return $this;
+    }
+
+    /**
+     * Get the Offset
+     *
+     * @return integer
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function getOffset(): int
+    {
+        return $this->_offset;
+    }
+
+    /**
+     * Get the Limit
+     *
+     * @return integer
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function getLimit(): int
+    {
+        return $this->_limit;
     }
 }

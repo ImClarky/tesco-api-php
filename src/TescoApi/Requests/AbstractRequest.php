@@ -4,7 +4,6 @@ namespace ImClarky\TescoApi\Requests;
 
 use ImClarky\TescoApi\Exceptions\RequestException;
 use ImClarky\TescoApi\Responses\AbstractResponse;
-use function GuzzleHttp\Psr7\_parse_request_uri;
 
 /**
  * Abstract Request Class

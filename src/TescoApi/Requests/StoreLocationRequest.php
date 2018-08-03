@@ -10,22 +10,66 @@ use ImClarky\TescoApi\Requests\Interfaces\PaginationInterface;
 use ImClarky\TescoApi\Requests\Traits\PaginationTrait;
 use ImClarky\TescoApi\Responses\StoreLocationResponse;
 
+/**
+ * Store Location Request Class
+ *
+ * @author Sean Clark <sean.clark@d3r.com>
+ */
 class StoreLocationRequest extends AbstractRequest implements PaginationInterface
 {
     use PaginationTrait;
 
+    /**
+     * @inheritDoc
+     *
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
     protected $_uri = "/locations/search";
 
+    /**
+     * Instance of the Sort Class
+     *
+     * @var Sort
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
     protected $_sort;
+
+    /**
+     * Instance of the Filter Class
+     *
+     * @var Filter
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
     protected $_filter;
+
+    /**
+     * Instance of the Like Class
+     *
+     * @var Like
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
     protected $_like;
 
+    /**
+     * Create a new request instance
+     *
+     * @param string $apiKey
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
     public function __construct(string $apiKey)
     {
         parent::__construct($apiKey);
     }
 
-    public function addSort(string $type, string $value)
+    /**
+     * Add a new Sort parameter
+     *
+     * @param string $type
+     * @param string $value
+     * @return self
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function addSort(string $type, string $value): self
     {
         if (!$this->_sort instanceof Sort) {
             $this->_sort = new Sort;
@@ -36,7 +80,15 @@ class StoreLocationRequest extends AbstractRequest implements PaginationInterfac
         return $this;
     }
 
-    public function addFilter(string $type, string $value)
+    /**
+     * Add a new Filter parameter
+     *
+     * @param string $type
+     * @param string $value
+     * @return self
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function addFilter(string $type, string $value): self
     {
         if (!$this->_filter instanceof Filter) {
             $this->_filter = new Filter;
@@ -47,7 +99,15 @@ class StoreLocationRequest extends AbstractRequest implements PaginationInterfac
         return $this;
     }
 
-    public function addLike(string $type, string $value)
+    /**
+     * Add a new Like parameter
+     *
+     * @param string $type
+     * @param string $value
+     * @return self
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function addLike(string $type, string $value): self
     {
         if (!$this->_like instanceof Like) {
             $this->_like = new Like;
@@ -58,7 +118,12 @@ class StoreLocationRequest extends AbstractRequest implements PaginationInterfac
         return $this;
     }
 
-    protected function buildQueryString()
+    /**
+     * @inheritDoc
+     *
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    protected function buildQueryString(): void
     {
         $segments = [];
 
@@ -76,10 +141,18 @@ class StoreLocationRequest extends AbstractRequest implements PaginationInterfac
             $segments[] = $param . "=" . $values;
         }
 
-        $this->_queryString .= implode('&', $segments);
+        $this->_queryString .= implode('&', $segments)
+            . "&limit=" . $this->getLimit()
+            . "&offset=" . $this->getOffset();
     }
 
-    protected function resolveResponse()
+    /**
+     * Create a new Response Instance
+     *
+     * @return StoreLocationResponse
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    protected function resolveResponse(): StoreLocationResponse
     {
         return new StoreLocationResponse($this->_result);
     }

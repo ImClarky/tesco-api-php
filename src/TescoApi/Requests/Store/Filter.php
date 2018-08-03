@@ -24,10 +24,10 @@ class Filter extends AbstractFilterable
      *
      * @param string $type
      * @param mixed $value
-     * @return AbstractRequest
+     * @return self
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    public function addOption(string $type, $value): AbstractRequest
+    public function addOption(string $type, $value): self
     {
         if (array_key_exists($type, $this->_filters)) {
             $this->_filters[$type][] = $value;

@@ -25,10 +25,10 @@ class Like extends AbstractFilterable
      * @param string $type
      * @param mixed $value
      * @param boolean $start
-     * @return AbstractRequest
+     * @return self
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    public function addOption(string $type, $value, bool $start = false): AbstractRequest
+    public function addOption(string $type, $value, bool $start = false): self
     {
         if (array_key_exists($type, $this->_filters)) {
             $this->_filters[$type][] = $this->makeFilterValue($value, $start);
