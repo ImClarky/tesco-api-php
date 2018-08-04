@@ -10,7 +10,7 @@ use ImClarky\TescoApi\Models\Grocery;
  *
  * @author Sean Clark <sean.clark@d3r.com>
  */
-class ProductResponse extends AbstractResponse
+class GroceryResponse extends AbstractResponse
 {
     /**
      * @inheritDoc

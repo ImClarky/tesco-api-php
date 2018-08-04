@@ -3,6 +3,7 @@
 namespace ImClarky\TescoApi\Models\Store;
 
 use ImClarky\TescoApi\Models\Store\OpeningTime;
+use DateTime;
 
 /**
  * Opening Times Exceptions CLass

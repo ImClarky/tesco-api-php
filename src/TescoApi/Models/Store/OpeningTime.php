@@ -24,14 +24,14 @@ class OpeningTime
     /**
      * Opening Time
      *
-     * @var int
+     * @var string
      */
     protected $_openingTime;
 
     /**
      * Clasing Time
      *
-     * @var int
+     * @var string
      */
     protected $_closingTime;
 
@@ -77,8 +77,12 @@ class OpeningTime
         $this->setIsOpen($data['isOpen']);
 
         if ($this->isOpen()) {
-            $this->setOpeningTime($data['open']);
-            $this->setClosingTime($data['close']);
+            $this->setOpeningTime(
+                array_key_exists('open', $data) ? $data['open'] : "0000"
+            );
+            $this->setClosingTime(
+                array_key_exists('close', $data) ? $data['close'] : "2400"
+            );
         }
     }
 

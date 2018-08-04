@@ -70,7 +70,7 @@ trait OpeningTimesTrait
      *
      * @return array
      */
-    public function getOpeningTimesExceptions(): array
+    public function getOpeningTimeExceptions(): array
     {
         return $this->_openingTimeExceptions;
     }
@@ -83,7 +83,10 @@ trait OpeningTimesTrait
      */
     public function isOpenOn(DateTime $datetime): bool
     {
-        $date = $this->getOpeningTimeByDate($datetime);
+        $date = $this->isDateInExceptions($datetime)
+            ? $this->getOpeningTimeExceptionByDate($datetime)
+            : $this->getOpeningTimeByDate($datetime);
+
         return $date ? $date->isOpen() : false;
     }
 
@@ -118,7 +121,7 @@ trait OpeningTimesTrait
         $isoDate = $date->format('Y-m-d');
 
         foreach ($this->_openingTimeExceptions as $exception) {
-            if ($exception->date == $isoDate) {
+            if ($exception->getDate() == $isoDate) {
                 return true;
             }
         }

@@ -140,24 +140,24 @@ class Store extends AbstractModel
      * @var array
      */
     protected $_dataMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'branchNumber' => 'branchNumner',
-        'isoCountryCode' => 'isoCountryCode',
-        'isoSubdivision' => 'isoSubdivision',
-        'lines' => 'setAddressLines',
-        'town' => 'addrTown',
-        'postcode' => 'addrPostcode',
-        'latitude' => 'geoLatitude',
-        'longitude' => 'geoLongitude',
-        'type' => 'type',
-        'category' => 'category',
-        'currentStatus' => 'status',
-        'unit' => 'distanceMeasurement',
-        'value' => 'distanceValue',
-        'standardOpeningHours' => 'setOpeningTimes',
-        'exceptions' => 'setOpeningTimeExceptions',
-        'facilities' => 'setFacilities'
+        'location.id' => 'id',
+        'location.name' => 'name',
+        'location.altIds.branchNumber' => 'branchNumber',
+        'location.region.isoCountryCode' => 'isoCountryCode',
+        'location.region.isoSubdivision' => 'isoSubdivision',
+        'location.contact.address.lines' => 'setAddressLines',
+        'location.contact.address.town' => 'addrTown',
+        'location.contact.address.postcode' => 'addrPostcode',
+        'location.geo.coordinates.latitude' => 'geoLatitude',
+        'location.geo.coordinates.longitude' => 'geoLongitude',
+        'location.classification.type' => 'type',
+        'location.classification.category' => 'category',
+        'location.status.currentStatus' => 'status',
+        'distanceFrom.unit' => 'distanceMeasurement',
+        'distanceFrom.value' => 'distanceValue',
+        'location.openingHours.0.standardOpeningHours' => 'setOpeningTimes',
+        'location.openingHours.0.exceptions' => 'setOpeningTimeExceptions',
+        'location.facilities' => 'setFacilities'
     ];
 
     /**
@@ -211,6 +211,16 @@ class Store extends AbstractModel
     }
 
     /**
+     * Get the Store ID
+     *
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->_id;
+    }
+
+    /**
      * Get the Store name
      *
      * @return string
@@ -238,6 +248,16 @@ class Store extends AbstractModel
     public function getIsoCountryCode(): string
     {
         return $this->_isoCountryCode;
+    }
+
+    /**
+     * Get the Store ISO Subdivision
+     *
+     * @return string
+     */
+    public function getIsoSubdivision(): string
+    {
+        return $this->_isoSubdivision;
     }
 
     /**
@@ -287,10 +307,7 @@ class Store extends AbstractModel
      */
     public function getFullAddress(): string
     {
-        return "{$this->getAddressLine1()},
-                {$this->getAddressLine2()},
-                {$this->getAddressTown()},
-                {$this->getAddressPostcode()}";
+        return "{$this->getAddressLine1()}, {$this->getAddressLine2()}, {$this->getAddressTown()}, {$this->getAddressPostcode()}";
     }
 
     /**
@@ -398,7 +415,7 @@ class Store extends AbstractModel
      */
     public function hasFacility(string $type): bool
     {
-        foreach ($this->facilities as $facility) {
+        foreach ($this->getFacilities() as $facility) {
             if ($facility->getName() === $type) {
                 return true;
             }
@@ -443,5 +460,16 @@ class Store extends AbstractModel
     public function getFacilities(): array
     {
         return $this->_facilities;
+    }
+
+    public function getFacility(string $facility): Facility
+    {
+        foreach ($this->getFacilities() as $f) {
+            if ($f->getName() === $facility) {
+                return $f;
+            }
+        }
+
+        return false;
     }
 }

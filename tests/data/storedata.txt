@@ -1,0 +1,1063 @@
+HTTP/1.1 200 OK
+status: 200
+cache-control: no-store, must-revalidate, no-cache
+pragma: no-cache
+transfer-encoding: chunked
+content-type: application/json; charset=utf-8
+content-encoding: gzip
+expires: Sat, 04 Aug 2018 12:58:05 GMT
+vary: Accept-Encoding
+dc1: AWS1
+traceid: 09995c76-c2e8-4b71-81b7-5b1fcf58a6bf
+x-interfaceversion: v3
+x-response-time: 399ms
+date: Sat, 04 Aug 2018 12:58:05 GMT
+
+{"results":[{"location": {
+        "id": "af379b13-9b97-4b1c-b345-c1214a3e2f42",
+        "name": "Lakeside Extra",
+        "altIds": {
+          "branchNumber": 2394
+        },
+        "region": {
+          "isoCountryCode": "GB",
+          "isoSubdivision": "ENG"
+        },
+        "contact": {
+          "address": {
+            "lines": [
+              {
+                "lineNumber": 1,
+                "text": "Cygnet View, Lakeside"
+              },
+              {
+                "lineNumber": 2,
+                "text": "West Thurrock"
+              }
+            ],
+            "town": "Grays",
+            "postcode": "RM20 1TX"
+          },
+          "phoneNumbers": [
+            {
+              "alias": "Default",
+              "number": "0345 677 9209"
+            }
+          ],
+          "communityChampion": {
+            "email": "2394@uk.tesco.com"
+          }
+        },
+        "geo": {
+          "coordinates": {
+            "longitude": 0.27565,
+            "latitude": 51.48899
+          }
+        },
+        "classification": {
+          "type": "Extra",
+          "category": "Store"
+        },
+        "status": {
+          "currentStatus": "Trading"
+        },
+        "openingHours": [
+          {
+            "type": "Trading",
+            "standardOpeningHours": {
+              "mo": {
+                "isOpen": "true",
+                "open": "0000"
+              },
+              "tu": {
+                "isOpen": "true"
+              },
+              "we": {
+                "isOpen": "true"
+              },
+              "th": {
+                "isOpen": "true"
+              },
+              "fr": {
+                "isOpen": "true"
+              },
+              "sa": {
+                "isOpen": "true",
+                "close": "2400"
+              },
+              "su": {
+                "isOpen": "true",
+                "open": "1000",
+                "close": "1600"
+              }
+            },
+            "exceptions": [
+              {
+                "date": "2017-12-25",
+                "hours": {
+                  "isOpen": "false"
+                }
+              },
+              {
+                "date": "2017-08-29",
+                "hours": {
+                  "isOpen": "true",
+                  "open": "0600"
+                }
+              },
+              {
+                "date": "2017-12-26",
+                "hours": {
+                  "isOpen": "true",
+                  "open": "0900",
+                  "close": "1800"
+                }
+              },
+              {
+                "date": "2017-12-27",
+                "hours": {
+                  "isOpen": "true",
+                  "open": "0600"
+                }
+              },
+              {
+                "date": "2018-01-02",
+                "hours": {
+                  "isOpen": "true",
+                  "open": "0600"
+                }
+              },
+              {
+                "date": "2018-04-02",
+                "hours": {
+                  "isOpen": "true",
+                  "open": "0900",
+                  "close": "1800"
+                }
+              },
+              {
+                "date": "2017-05-30",
+                "hours": {
+                  "isOpen": "true",
+                  "open": "0600"
+                }
+              },
+              {
+                "date": "2017-08-28",
+                "hours": {
+                  "isOpen": "true",
+                  "open": "0800",
+                  "close": "2000"
+                }
+              },
+              {
+                "date": "2018-04-01",
+                "hours": {
+                  "isOpen": "false"
+                }
+              },
+              {
+                "date": "2018-04-03",
+                "hours": {
+                  "isOpen": "true",
+                  "open": "0600"
+                }
+              },
+              {
+                "date": "2018-01-01",
+                "hours": {
+                  "isOpen": "true",
+                  "open": "0900",
+                  "close": "1800"
+                }
+              },
+              {
+                "date": "2017-05-29",
+                "hours": {
+                  "isOpen": "true",
+                  "open": "0900",
+                  "close": "2000"
+                }
+              },
+              {
+                "date": "2017-05-01",
+                "hours": {
+                  "isOpen": "true",
+                  "open": "0900",
+                  "close": "2000"
+                }
+              },
+              {
+                "date": "2017-05-02",
+                "hours": {
+                  "isOpen": "true",
+                  "open": "0600"
+                }
+              },
+              {
+                "date": "2018-05-07",
+                "hours": {
+                  "isOpen": "true",
+                  "open": "0900",
+                  "close": "1800"
+                }
+              },
+              {
+                "date": "2018-05-08",
+                "hours": {
+                  "isOpen": "true",
+                  "open": "0600"
+                }
+              },
+              {
+                "date": "2018-05-28",
+                "hours": {
+                  "isOpen": "true",
+                  "open": "0900",
+                  "close": "1800"
+                }
+              },
+              {
+                "date": "2018-05-29",
+                "hours": {
+                  "isOpen": "true",
+                  "open": "0600"
+                }
+              }
+            ]
+          }
+        ],
+        "facilities": [
+          {
+            "name": "VISION_EXPRESS",
+            "tags": [
+              "public"
+            ],
+            "openingHours": [
+              {
+                "type": "Default",
+                "standardOpeningHours": {
+                  "mo": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "2000"
+                  },
+                  "tu": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "2000"
+                  },
+                  "we": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "2000"
+                  },
+                  "th": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "2000"
+                  },
+                  "fr": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "1900"
+                  },
+                  "sa": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "1900"
+                  },
+                  "su": {
+                    "isOpen": "true",
+                    "open": "1000",
+                    "close": "1600"
+                  }
+                }
+              }
+            ],
+            "description": "Vision Express",
+            "contact": {
+              "phoneNumbers": [
+                {
+                  "alias": "Default",
+                  "number": "01708 957528"
+                }
+              ]
+            }
+          },
+          {
+            "name": "TESCO_PAY_PLUS",
+            "tags": [
+              "public"
+            ],
+            "description": "Tesco Pay+"
+          },
+          {
+            "name": "KRISPY_KREME",
+            "tags": [
+              "public"
+            ],
+            "description": "Krispy Kreme"
+          },
+          {
+            "name": "GM_PICK_FROM_STORE",
+            "description": "GMO Pick From Store"
+          },
+          {
+            "name": "MEAT",
+            "tags": [
+              "public",
+              "food_range"
+            ],
+            "description": "Meat"
+          },
+          {
+            "name": "WORLD_FOOD",
+            "tags": [
+              "public",
+              "food_range"
+            ],
+            "description": "World Food"
+          },
+          {
+            "name": "TRAVEL_MONEY",
+            "tags": [
+              "public"
+            ],
+            "openingHours": [
+              {
+                "type": "Default",
+                "standardOpeningHours": {
+                  "mo": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "2000"
+                  },
+                  "tu": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "2000"
+                  },
+                  "we": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "2000"
+                  },
+                  "th": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "2000"
+                  },
+                  "fr": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "2000"
+                  },
+                  "sa": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "1800"
+                  },
+                  "su": {
+                    "isOpen": "true",
+                    "open": "1030",
+                    "close": "1600"
+                  }
+                }
+              }
+            ],
+            "description": "Travel Money",
+            "contact": {
+              "phoneNumbers": [
+                {
+                  "alias": "Default",
+                  "number": "01708 680541"
+                }
+              ]
+            }
+          },
+          {
+            "name": "COINSTAR",
+            "tags": [
+              "public"
+            ],
+            "description": "Coinstar"
+          },
+          {
+            "name": "TECH_SUPPORT",
+            "openingHours": [
+              {
+                "type": "Default",
+                "standardOpeningHours": {
+                  "mo": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "2000"
+                  },
+                  "tu": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "2000"
+                  },
+                  "we": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "2000"
+                  },
+                  "th": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "2000"
+                  },
+                  "fr": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "2100"
+                  },
+                  "sa": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2100"
+                  },
+                  "su": {
+                    "isOpen": "true",
+                    "open": "1000",
+                    "close": "1600"
+                  }
+                }
+              }
+            ],
+            "description": "TECH SUPPORT"
+          },
+          {
+            "name": "VISUALLY_IMPAIRED",
+            "tags": [
+              "enabling",
+              "public"
+            ],
+            "description": "Facilities are available for people who are visually impaired. Including large print and braille."
+          },
+          {
+            "name": "RUG_DOCTOR",
+            "tags": [
+              "public"
+            ],
+            "description": "Rug Doctor"
+          },
+          {
+            "name": "DIRECT_RETURNS",
+            "tags": [
+              "public"
+            ],
+            "description": "Direct Returns"
+          },
+          {
+            "name": "CAR_BODY_REPAIR",
+            "tags": [
+              "public"
+            ],
+            "description": "Car Body Repair"
+          },
+          {
+            "name": "MOBILITY_IMPAIRMENT",
+            "tags": [
+              "enabling",
+              "public"
+            ],
+            "description": "Facilities are available for people with mobility impairment."
+          },
+          {
+            "name": "TOILETS",
+            "tags": [
+              "public"
+            ],
+            "description": "Toilets"
+          },
+          {
+            "name": "PETROL_FILLING_STATION",
+            "tags": [
+              "public"
+            ],
+            "description": "Petrol"
+          },
+          {
+            "name": "MAX_PRINT_SHOP",
+            "tags": [
+              "public"
+            ],
+            "description": "Max Print Shop"
+          },
+          {
+            "name": "RECYCLING",
+            "tags": [
+              "public"
+            ],
+            "description": "Recycling"
+          },
+          {
+            "name": "DIRECT_CLICK_AND_COLLECT",
+            "tags": [
+              "public"
+            ],
+            "openingHours": [
+              {
+                "type": "Default",
+                "standardOpeningHours": {
+                  "mo": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "tu": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "we": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "th": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "fr": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "sa": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "su": {
+                    "isOpen": "true",
+                    "open": "1000",
+                    "close": "1600"
+                  }
+                }
+              }
+            ],
+            "description": "Direct Collection",
+            "contact": {
+              "phoneNumbers": [
+                {
+                  "alias": "Default",
+                  "number": "0800 323 4050"
+                }
+              ]
+            }
+          },
+          {
+            "name": "CLOTHING_ORDER_POINT",
+            "tags": [
+              "public"
+            ],
+            "description": "Clothing Order Point"
+          },
+          {
+            "name": "AFRO_CARIBBEAN",
+            "tags": [
+              "public",
+              "food_range"
+            ],
+            "description": "Afro Caribbean"
+          },
+          {
+            "name": "GAMES",
+            "tags": [
+              "public"
+            ],
+            "description": "Games"
+          },
+          {
+            "name": "24_HOURS",
+            "tags": [
+              "public"
+            ],
+            "description": "24 hours"
+          },
+          {
+            "name": "PIZZA",
+            "tags": [
+              "public",
+              "food_range"
+            ],
+            "description": "Pizza"
+          },
+          {
+            "name": "TIMPSON",
+            "tags": [
+              "public"
+            ],
+            "description": "Timpson"
+          },
+          {
+            "name": "CLOTHING_COLLECTION",
+            "openingHours": [
+              {
+                "type": "Default",
+                "standardOpeningHours": {
+                  "mo": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "tu": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "we": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "th": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "fr": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "sa": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "su": {
+                    "isOpen": "true",
+                    "open": "1000",
+                    "close": "1600"
+                  }
+                }
+              }
+            ],
+            "description": "CLOTHING COLLECTION"
+          },
+          {
+            "name": "TESCO_MOBILE_SHOP",
+            "tags": [
+              "public"
+            ],
+            "openingHours": [
+              {
+                "type": "Default",
+                "standardOpeningHours": {
+                  "mo": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "2000"
+                  },
+                  "tu": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "2000"
+                  },
+                  "we": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "2000"
+                  },
+                  "th": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "2000"
+                  },
+                  "fr": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "2000"
+                  },
+                  "sa": {
+                    "isOpen": "true",
+                    "open": "0900",
+                    "close": "2000"
+                  },
+                  "su": {
+                    "isOpen": "true",
+                    "open": "1000",
+                    "close": "1600"
+                  }
+                }
+              }
+            ],
+            "description": "Tesco Mobile Shop"
+          },
+          {
+            "name": "DEPOSIT_MONEY",
+            "tags": [
+              "public"
+            ],
+            "description": "Deposit Money"
+          },
+          {
+            "name": "CLOTHING_RANGE",
+            "tags": [
+              "public"
+            ],
+            "description": "Clothing Range"
+          },
+          {
+            "name": "WIFI",
+            "tags": [
+              "public"
+            ],
+            "description": "Wifi"
+          },
+          {
+            "name": "SCAN_AS_YOU_SHOP",
+            "tags": [
+              "public"
+            ],
+            "openingHours": [
+              {
+                "type": "Default",
+                "standardOpeningHours": {
+                  "mo": {
+                    "isOpen": "true",
+                    "open": "0600",
+                    "close": "2400"
+                  },
+                  "tu": {
+                    "isOpen": "true",
+                    "open": "0600",
+                    "close": "2400"
+                  },
+                  "we": {
+                    "isOpen": "true",
+                    "open": "0600",
+                    "close": "2400"
+                  },
+                  "th": {
+                    "isOpen": "true",
+                    "open": "0600",
+                    "close": "2400"
+                  },
+                  "fr": {
+                    "isOpen": "true",
+                    "open": "0600",
+                    "close": "2400"
+                  },
+                  "sa": {
+                    "isOpen": "true",
+                    "open": "0600",
+                    "close": "2400"
+                  },
+                  "su": {
+                    "isOpen": "true",
+                    "open": "1000",
+                    "close": "1600"
+                  }
+                }
+              }
+            ],
+            "description": "Scan as you Shop"
+          },
+          {
+            "name": "DEFIBRILATOR",
+            "tags": [
+              "enabling",
+              "public"
+            ],
+            "description": "Defibrillator available in store"
+          },
+          {
+            "name": "ASIAN",
+            "tags": [
+              "public",
+              "food_range"
+            ],
+            "description": "Asian"
+          },
+          {
+            "name": "PHARMACY",
+            "tags": [
+              "public"
+            ],
+            "openingHours": [
+              {
+                "type": "Default",
+                "standardOpeningHours": {
+                  "mo": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "tu": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "we": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "th": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "fr": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "sa": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "su": {
+                    "isOpen": "true",
+                    "open": "1000",
+                    "close": "1600"
+                  }
+                }
+              }
+            ],
+            "description": "Pharmacy",
+            "contact": {
+              "phoneNumbers": [
+                {
+                  "alias": "Default",
+                  "number": "02038 013165"
+                }
+              ]
+            }
+          },
+          {
+            "name": "MONEYGRAM",
+            "tags": [
+              "public"
+            ],
+            "description": "MoneyGram"
+          },
+          {
+            "name": "CAFE",
+            "tags": [
+              "public",
+              "refurbished"
+            ],
+            "openingHours": [
+              {
+                "type": "Default",
+                "standardOpeningHours": {
+                  "mo": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "1800"
+                  },
+                  "tu": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "1800"
+                  },
+                  "we": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "1800"
+                  },
+                  "th": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "1800"
+                  },
+                  "fr": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "1800"
+                  },
+                  "sa": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "1800"
+                  },
+                  "su": {
+                    "isOpen": "true",
+                    "open": "0930",
+                    "close": "1600"
+                  }
+                }
+              }
+            ],
+            "description": "Cafe"
+          },
+          {
+            "name": "PHOTO_SHOP",
+            "tags": [
+              "public"
+            ],
+            "description": "Photo Shop"
+          },
+          {
+            "name": "POLISH",
+            "tags": [
+              "public",
+              "food_range"
+            ],
+            "description": "Polish"
+          },
+          {
+            "name": "FISH",
+            "tags": [
+              "public",
+              "food_range"
+            ],
+            "description": "Fish"
+          },
+          {
+            "name": "JET_WASH",
+            "tags": [
+              "public"
+            ],
+            "description": "Jet Wash"
+          },
+          {
+            "name": "WHEELCHAIR_ACCESS",
+            "tags": [
+              "enabling",
+              "public"
+            ],
+            "description": "Wheelchair assistance is possible in our store."
+          },
+          {
+            "name": "CAR_&_VAN_RENTAL",
+            "tags": [
+              "public"
+            ],
+            "description": "Car & Van Rental"
+          },
+          {
+            "name": "PAYPOINT",
+            "tags": [
+              "public"
+            ],
+            "description": "PayPoint"
+          },
+          {
+            "name": "CHICKEN",
+            "tags": [
+              "public",
+              "food_range"
+            ],
+            "description": "Chicken"
+          },
+          {
+            "name": "MOMENTUM_99",
+            "tags": [
+              "public"
+            ],
+            "description": "Momentum 99"
+          },
+          {
+            "name": "GROCERY_COLLECTION",
+            "tags": [
+              "public"
+            ],
+            "openingHours": [
+              {
+                "type": "Default",
+                "standardOpeningHours": {
+                  "mo": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "tu": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "we": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "th": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "fr": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "2000"
+                  },
+                  "sa": {
+                    "isOpen": "true",
+                    "open": "0800",
+                    "close": "1800"
+                  },
+                  "su": {
+                    "isOpen": "true",
+                    "open": "1000",
+                    "close": "1600"
+                  }
+                }
+              }
+            ],
+            "description": "Grocery Collection",
+            "contact": {
+              "phoneNumbers": [
+                {
+                  "alias": "Default",
+                  "number": "0800 323 4040"
+                }
+              ]
+            }
+          },
+          {
+            "name": "NON_ASSISTED_WHEELCHAIR_ACCESS",
+            "tags": [
+              "enabling",
+              "public"
+            ],
+            "description": "Non assisted wheelchair access is possible."
+          },
+          {
+            "name": "FOOD_COLLECTION",
+            "tags": [
+              "public"
+            ],
+            "description": "Food Collection"
+          },
+          {
+            "name": "FREE_FROM",
+            "tags": [
+              "public",
+              "food_range"
+            ],
+            "description": "Free From"
+          },
+          {
+            "name": "ATM",
+            "tags": [
+              "public"
+            ],
+            "description": "ATM"
+          },
+          {
+            "name": "ASSISTANCE_DOGS",
+            "tags": [
+              "enabling",
+              "public"
+            ],
+            "description": "Assistance dogs are welcome in our store."
+          }
+        ]
+      },
+      "distanceFrom": {
+        "unit": "miles",
+        "value": 2.5
+      }
+    }
+]
+}

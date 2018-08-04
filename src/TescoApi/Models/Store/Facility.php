@@ -122,12 +122,12 @@ class Facility
         $this->setName($dataset['name']);
         $this->setDescription($dataset['description']);
 
-        if ($tags = $dataset['tags']) {
-            $this->setTags($tags);
+        if (array_key_exists('tags', $dataset)) {
+            $this->setTags($dataset['tags']);
         }
 
-        if ($times = $dataset['openingHours'][0]['standardOpeningHours']) {
-            $this->setOpeningTimes($times);
+        if (array_key_exists('openingHours', $dataset)) {
+            $this->setTags($dataset['openingHours'][0]['standardOpeningHours']);
         }
     }
 
