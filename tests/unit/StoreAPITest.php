@@ -6,7 +6,6 @@ use ImClarky\TescoApi\Models\Store;
 use ImClarky\TescoApi\Models\Store\Facility;
 use ImClarky\TescoApi\Models\Store\OpeningTime;
 use ImClarky\TescoApi\Models\Store\OpeningTimeException;
-use DateTime;
 
 class StoreAPITest extends TestCase
 {
