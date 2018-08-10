@@ -4,3 +4,11 @@ php:
   - '5.6'
   - '7.1'
   - hhmv
+
+before_script:
+  - composer install
+
+notifications:
+  email:
+    - seandclark94@gmail.com
+  on_success: never
