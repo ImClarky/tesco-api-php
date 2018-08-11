@@ -119,16 +119,16 @@ class StoreAPITest extends TestCase
         $this->assertTrue(is_array($this->_model->getFacilities()));
         $this->assertCount(51, $this->_model->getFacilities());
 
-        $this->assertTrue($this->_model->hasFacility(Facility::ATM));
-        $this->assertFalse($this->_model->hasFacility(Facility::PAYQWIQ));
+        $this->assertTrue($this->_model->hasFacility(Facility::FACILITY_ATM));
+        $this->assertFalse($this->_model->hasFacility(Facility::FACILITY_PAYQWIQ));
         $this->assertTrue(
             $this->_model->hasFacilities([
-                Facility::ATM,
-                Facility::COINSTAR
+                Facility::FACILITY_ATM,
+                Facility::FACILITY_COINSTAR
             ])
         );
 
-        $this->assertInstanceOf(Facility::class, $this->_model->getFacility(Facility::ATM));
+        $this->assertInstanceOf(Facility::class, $this->_model->getFacility(Facility::FACILITY_ATM));
     }
 
     public function testOpeningTimes()

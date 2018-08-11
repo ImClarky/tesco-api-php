@@ -5,6 +5,20 @@ A PHP Client for the Tesco Supermarket API
 ![Build Status](https://travis-ci.org/ImClarky/tesco-api-php.svg?branch=master)
 ![Packagist](https://img.shields.io/packagist/l/imclarky/tesco-api.svg)
 
+## Contents
+- [Getting Started](#getting-started)
+    - [Installation](#installation)
+    - [Requirements](#requirements)
+    - [API Key](#api-key)
+    - [Simple Example](#simple-example)
+- [Usage](#usage)
+    - [Requests](#requests)
+        - [Grocery Request](#grocery-request)
+        - [Product Request](#product-request)
+        - [Store Location Request](#store-location-request)
+    - [Responses](#responses)
+    - [Models](#models)
+
 ## Getting Started
 ### Installation
 To install, simply require the package using composer:
@@ -164,3 +178,7 @@ Get the previous page of results.
 
 **`goToPage(int $page)`**<br>
 Go to a specific page of results.
+
+### Responses
+
+### Models
