@@ -84,11 +84,11 @@ class StoreLocationRequest extends AbstractRequest implements PaginationInterfac
      * Add a new Filter parameter
      *
      * @param string $type
-     * @param string $value
+     * @param mixed $value
      * @return self
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    public function addFilter(string $type, string $value): self
+    public function addFilter(string $type, $value): self
     {
         if (!$this->_filter instanceof Filter) {
             $this->_filter = new Filter;
@@ -103,17 +103,18 @@ class StoreLocationRequest extends AbstractRequest implements PaginationInterfac
      * Add a new Like parameter
      *
      * @param string $type
-     * @param string $value
+     * @param mixed $value
+     * @param boolean $start
      * @return self
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    public function addLike(string $type, string $value): self
+    public function addLike(string $type, $value, bool $start = false): self
     {
         if (!$this->_like instanceof Like) {
             $this->_like = new Like;
         }
 
-        $this->_like->addOption($type, $value);
+        $this->_like->addOption($type, $value, $start);
 
         return $this;
     }

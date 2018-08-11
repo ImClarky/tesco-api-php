@@ -20,13 +20,13 @@ abstract class AbstractFilterable
     /**
      * Filters
      */
-    const FILTERABLE_NAME = 'name';
-    const FILTERABLE_BRANCHNUMBER = 'branchNumber';
-    const FILTERABLE_ISOCOUNTRYCODE = 'isoCountryCode';
-    const FILTERABLE_FACILITY = 'facilities';
-    const FILTERABLE_CATEGORY = 'category';
-    const FILTERABLE_TYPE = 'type';
-    const FILTERABLE_STATUS = 'status';
+    const FILTER_NAME = 'name';
+    const FILTER_BRANCHNUMBER = 'branchNumber';
+    const FILTER_ISOCOUNTRYCODE = 'isoCountryCode';
+    const FILTER_FACILITY = 'facilities';
+    const FILTER_CATEGORY = 'category';
+    const FILTER_TYPE = 'type';
+    const FILTER_STATUS = 'status';
 
     /**
      * Build the query parameter string
