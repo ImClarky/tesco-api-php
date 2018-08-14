@@ -25,7 +25,7 @@ class GroceryResponse extends AbstractResponse
      */
     protected function populateModels(): void
     {
-        foreach ($this->_data['products']['results'] as $product) {
+        foreach ($this->_data['uk']['ghs']['products']['results'] as $product) {
             $this->_models[] = new Grocery($product);
         }
     }
