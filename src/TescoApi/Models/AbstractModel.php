@@ -58,7 +58,12 @@ abstract class AbstractModel
         $keys = explode('.', $pointer);
 
         foreach ($keys as $key) {
-            $value = $value[$key];
+            if ( array_key_exists($key, $value)) {
+                $value = $value[$key];
+            } else {
+                $value = null;
+                break;
+            }
         }
 
         return $value;
