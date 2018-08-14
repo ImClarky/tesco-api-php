@@ -232,7 +232,7 @@ class Product extends AbstractModel
         'pkgDimensions.volumeUom' => 'volumeUnitOfMeasure',
         'ingredients' => 'ingredients',
         'gda.gdaRefs.values' => 'setGdaReferences',
-        'calcNutrition' => 'setNutritionValues'
+        'calcNutrition.calcNutrients' => 'setNutritionValues'
     ];
 
     /**
