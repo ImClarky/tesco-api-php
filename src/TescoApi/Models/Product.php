@@ -211,27 +211,27 @@ class Product extends AbstractModel
         'tpnc' => 'tpnc',
         'description' => 'description',
         'brand' => 'brand',
-        'quantity' => 'quantity',
-        'totalQuantity' => 'totalQuantity',
-        'quantityUom' => 'unitOfMeasure',
-        'netContents' => 'netContents',
-        'avgMeasure' => 'averageMeasure',
-        'isFood' => 'setIsFood',
-        'isDrink' => 'setIsDrink',
-        'isHazardous' => 'setIsHazardous',
-        'storageType' => 'storageType',
-        'isNonLiquidAnalgesic' => 'setIsNonLiquidAnalgesic',
-        'containsLoperamide' => 'setContainsLoperamide',
-        'width' => 'width',
-        'height' => 'height',
-        'depth' => 'depth',
-        'dimensionUom' => 'dimensionUnitOfMeasure',
-        'weight' => 'weight',
-        'weightUom' => 'weightUnitOfMeasure',
-        'volume' => 'volume',
-        'volumeUom' => 'volumeUnitOfMeasure',
+        'qtyContents.quantity' => 'quantity',
+        'qtyContents.totalQuantity' => 'totalQuantity',
+        'qtyContents.quantityUom' => 'unitOfMeasure',
+        'qtyContents.netContents' => 'netContents',
+        'qtyContents.avgMeasure' => 'averageMeasure',
+        'productCharacteristics.isFood' => 'setIsFood',
+        'productCharacteristics.isDrink' => 'setIsDrink',
+        'productCharacteristics.isHazardous' => 'setIsHazardous',
+        'productCharacteristics.storageType' => 'storageType',
+        'productCharacteristics.isNonLiquidAnalgesic' => 'setIsNonLiquidAnalgesic',
+        'productCharacteristics.containsLoperamide' => 'setContainsLoperamide',
+        'pkgDimensions.width' => 'width',
+        'pkgDimensions.height' => 'height',
+        'pkgDimensions.depth' => 'depth',
+        'pkgDimensions.dimensionUom' => 'dimensionUnitOfMeasure',
+        'pkgDimensions.weight' => 'weight',
+        'pkgDimensions.weightUom' => 'weightUnitOfMeasure',
+        'pkgDimensions.volume' => 'volume',
+        'pkgDimensions.volumeUom' => 'volumeUnitOfMeasure',
         'ingredients' => 'ingredients',
-        'gdaRefs' => 'setGdaReferences',
+        'gda.gdaRefs.values' => 'setGdaReferences',
         'calcNutrition' => 'setNutritionValues'
     ];
 
@@ -517,13 +517,24 @@ class Product extends AbstractModel
     }
 
     /**
+     * Get the Dimension Unit of Measurement
+     *
+     * @return string
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function getDimensionMeasurement(): string
+    {
+        return $this->_dimensionUnitOfMeasure;
+    }
+
+    /**
      * Get Product Width with Measurement
      *
      * @return string
      */
     public function getWidthWithMeasurement(): string
     {
-        return $this->getWidth() . $this->_dimensionUnitOfMeasure;
+        return $this->getWidth() . $this->getDimensionMeasurement();
     }
 
     /**
@@ -533,7 +544,7 @@ class Product extends AbstractModel
      */
     public function getHeightWithMeasurement(): string
     {
-        return $this->getHeight() . $this->_dimensionUnitOfMeasure;
+        return $this->getHeight() . $this->getDimensionMeasurement();
     }
 
     /**
@@ -543,7 +554,7 @@ class Product extends AbstractModel
      */
     public function getDepthWithMeasurement(): string
     {
-        return $this->getDepth() . $this->_dimensionUnitOfMeasure;
+        return $this->getDepth() . $this->getDimensionMeasurement();
     }
 
     /**
@@ -568,6 +579,17 @@ class Product extends AbstractModel
     }
 
     /**
+     * Get the Weight Unit of Measurement
+     *
+     * @return string
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function getWeightMeasurement(): string
+    {
+        return $this->_weightUnitOfMeasure;
+    }
+
+    /**
      * Get Product Volume
      *
      * @return float
@@ -578,13 +600,24 @@ class Product extends AbstractModel
     }
 
     /**
+     * Get the Volume Unit of Measurement
+     *
+     * @return string
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function getVolumeMeasurement(): string
+    {
+        return $this->_volumeUnitOfMeasure;
+    }
+
+    /**
      * Get Product Weight with Measurement
      *
      * @return string
      */
     public function getWeightWithMeasurement(): string
     {
-        return $this->getWeight() . $this->_weightUnitOfMeasure;
+        return $this->getWeight() . $this->getWeightMeasurement();
     }
 
     /**
@@ -594,6 +627,6 @@ class Product extends AbstractModel
      */
     public function getVolumeWithMeasurement(): string
     {
-        return $this->getVolume() . $this->_volumeUnitOfMeasure;
+        return $this->getVolume() . $this->getVolumeMeasurement();
     }
 }
