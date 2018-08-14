@@ -35,10 +35,12 @@ abstract class AbstractModel
         foreach ($this->_dataMap as $pointer => $property) {
             $value = $this->getDataSetValue($pointer, $dataset);
 
-            if (method_exists($this, $property)) {
-                $this->{$property}($value);
-            } elseif (property_exists($this, '_' . $property)) {
-                $this->{'_' . $property} = $value;
+            if (!is_null($value)) {
+                if (method_exists($this, $property)) {
+                    $this->{$property}($value);
+                } elseif (property_exists($this, '_' . $property)) {
+                    $this->{'_' . $property} = $value;
+                }
             }
         }
     }
