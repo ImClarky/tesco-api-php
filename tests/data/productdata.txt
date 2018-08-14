@@ -1,0 +1,239 @@
+HTTP/1.1 200 OK
+status: 200
+cache-control: public, no-transform, max-age=300, s-maxage=300
+transfer-encoding: chunked
+content-type: application/json;charset=utf-8
+content-encoding: gzip
+content-language: en-GB
+vary: Accept-Encoding,User-Agent
+access-control-allow-origin: *
+access-control-allow-headers: origin,content-type,accept,Authorization
+access-control-allow-methods: GET,OPTIONS,HEAD
+access-control-max-age: 86400
+date: Mon, 13 Aug 2018 08:04:38 GMT
+
+{
+  "products": [
+    {
+      "gtin": "05052910081995",
+      "tpnb": "051703744",
+      "tpnc": "275152404",
+      "description": "Tesco Spaghetti Bolognese 450G",
+      "brand": "TESCO",
+      "qtyContents": {
+        "quantity": 450.0,
+        "totalQuantity": 450.0,
+        "quantityUom": "g",
+        "netContents": "450g e"
+      },
+      "productCharacteristics": {
+        "isFood": true,
+        "isDrink": false,
+        "healthScore": 76,
+        "isHazardous": false,
+        "storageType": "Chilled",
+        "isNonLiquidAnalgesic": false,
+        "containsLoperamide": false
+      },
+      "ingredients": [
+        "<b>INGREDIENTS LIST:</b><br><br>Cooked Pasta",
+        "Beef (23%), Tomato (Tomato, Tomato Purée, Tomato Juice, Citric Acid, Calcium Chloride), Water, Tomato Purée, Onion, Red Wine, Garlic Purée, Cornflour, Carrot, Beef Extract, Wheat Flour (Wheat Flour, Calcium Carbonate, Iron, Niacin, Thiamin), Salt, Yeast Extract, Olive Oil, Oregano, Marjoram, Basil, Sugar, Black Pepper, Bay, Extra Virgin Olive Oil.<br><br>Cooked Pasta contains: Durum <strong>Wheat</strong> Semolina, Water.<br><br>Wheat Flour contains: Wheat Flour, Calcium Carbonate, Iron, Niacin, Thiamin)(<strong>Wheat</strong> Flour, Calcium Carbonate, Iron, Nicotinamide, Thiamin."
+      ],
+      "gda": {
+        "gdaRefs": [
+          {
+            "gdaDescription": "Guideline Amounts Per Serv",
+            "headers": [
+              "Each pack"
+            ],
+            "footers": [
+              "*Reference intake of an average adult (8400 kJ / 2000 kcal)",
+              "Typical values per 100g: Energy 492.26kJ (117.15kcal)"
+            ],
+            "values": [
+              {
+                "name": "Energy",
+                "values": [
+                  "2117kJ",
+                  "504kcal"
+                ],
+                "percent": "25"
+              },
+              {
+                "name": "Fat",
+                "values": [
+                  "16.5g"
+                ],
+                "percent": "24",
+                "rating": "medium"
+              },
+              {
+                "name": "Saturates",
+                "values": [
+                  "7.1g"
+                ],
+                "percent": "36",
+                "rating": "high"
+              },
+              {
+                "name": "Sugars",
+                "values": [
+                  "8.1g"
+                ],
+                "percent": "9",
+                "rating": "low"
+              },
+              {
+                "name": "Salt",
+                "values": [
+                  "0.9g"
+                ],
+                "percent": "15",
+                "rating": "low"
+              }
+            ]
+          }
+        ]
+      },
+      "calcNutrition": {
+        "per100Header": "Per 100g  / Per 100ml",
+        "perServingHeader": "Each pack (430g**)",
+        "calcNutrients": [
+          {
+            "name": "Energy (kJ)",
+            "valuePer100": "492.26",
+            "valuePerServing": "2116.72"
+          },
+          {
+            "name": "Energy (kcal)",
+            "valuePer100": "117.15",
+            "valuePerServing": "503.75"
+          },
+          {
+            "name": "Fat (g)",
+            "valuePer100": "3.83",
+            "valuePerServing": "16.47"
+          },
+          {
+            "name": "Saturates (g)",
+            "valuePer100": "1.64",
+            "valuePerServing": "7.05"
+          },
+          {
+            "name": "Carbohydrate (g)",
+            "valuePer100": "13",
+            "valuePerServing": "55.9"
+          },
+          {
+            "name": "Sugars (g)",
+            "valuePer100": "1.88",
+            "valuePerServing": "8.08"
+          },
+          {
+            "name": "Fibre (g)",
+            "valuePer100": "1.68",
+            "valuePerServing": "7.22"
+          },
+          {
+            "name": "Protein (g)",
+            "valuePer100": "6.83",
+            "valuePerServing": "29.37"
+          },
+          {
+            "name": "Salt (g)",
+            "valuePer100": ".22",
+            "valuePerServing": ".94"
+          }
+        ]
+      },
+      "allergenAdvice": {
+        "allergenText": "For allergens, including cereals containing gluten, see ingredients in bold."
+      },
+      "storage": [
+        "Suitable for home freezing. Ideally freeze as soon as possible after purchase but always by 'use by' date shown.\nKeep refrigerated."
+      ],
+      "marketingText": "Minced beef simmered in a rich red wine sauce with oregano and basil. Our team of chefs work together to create well loved Italian inspired dishes using the same passion and creativity as you would at home.\nMinced beef simmered in a rich red wine sauce with oregano and basil. Our team of chefs work together to create well loved Italian inspired dishes using the same passion and creativity as you would at home.",
+      "pkgDimensions": [
+        {
+          "no": 1,
+          "height": 5.6,
+          "width": 15.0,
+          "depth": 12.6,
+          "dimensionUom": "cm",
+          "weight": 488.0,
+          "weightUom": "g",
+          "volume": 1058.4,
+          "volumeUom": "cc"
+        }
+      ],
+      "productAttributes": [
+        {
+          "category": [
+            {
+              "cooking_instructions": [
+                {
+                  "cooking_method": {
+                    "name": "Cooking Method",
+                    "value": "General"
+                  },
+                  "cooking_instructions": {
+                    "name": "Cooking Instructions",
+                    "value": "Remove outer sleeve and pierce film lid several times.\n    Allow tray to stand until it regains its rigidity.\n    All appliances vary, these are guidelines only.\n    Check food is piping hot throughout before serving."
+                  }
+                },
+                {
+                  "cooking_method": {
+                    "name": "Cooking Method",
+                    "value": "Oven"
+                  },
+                  "cooking_instructions": {
+                    "name": "Cooking Instructions",
+                    "value": "\nFrom chilled: 190°C/Fan 170°C/Gas 5 30-35 mins Place on a baking tray in the centre of a pre-heated oven for 30-35 minutes. Leave to stand for 2 minutes after heating. Stir well before serving."
+                  }
+                },
+                {
+                  "cooking_method": {
+                    "name": "Cooking Method",
+                    "value": "Oven"
+                  },
+                  "cook_from_state": {
+                    "name": "Cook From State",
+                    "value": "Frozen"
+                  },
+                  "cooking_instructions": {
+                    "name": "Cooking Instructions",
+                    "value": "\nFrom frozen: 190°C/Fan 170°C/Gas 5 50-55 mins Place on a baking tray in the centre of a pre-heated oven for 50-55 minutes. Leave to stand for 2 minutes after heating. Stir well before serving."
+                  }
+                },
+                {
+                  "cooking_method": {
+                    "name": "Cooking Method",
+                    "value": "Microwave"
+                  },
+                  "cooking_instructions": {
+                    "name": "Cooking Instructions",
+                    "value": "\nFrom chilled: 800W / 900W 5 / 4 mins\n\nFor best results microwave heat.\nHeat on full power.\nLeave to stand for 1 minute after heating.\nStir well before serving."
+                  }
+                },
+                {
+                  "cooking_method": {
+                    "name": "Cooking Method",
+                    "value": "Microwave"
+                  },
+                  "cook_from_state": {
+                    "name": "Cook From State",
+                    "value": "Frozen"
+                  },
+                  "cooking_instructions": {
+                    "name": "Cooking Instructions",
+                    "value": "\nFrom frozen: 800W / 900W  9 ½ / 8 ½ mins\n\nFor best results microwave heat.\nHeat on full power.\nLeave to stand for 1 minute after heating.\nStir well before serving."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
