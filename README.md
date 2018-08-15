@@ -88,6 +88,8 @@ $storeLocationRequest = new \ImClarky\TescoApi\Requests\StoreLocationRequest('ap
 
 Each request object has different methods to add query paramters to the API request.
 
+----
+
 #### Grocery Request
 **`addSearchTerm(string $searchTerm)`**<br>
 Add a search term to search for. Providing a search term is required; if no term is added when the request is sent, the Request class will throw a `RequestException`.
@@ -97,6 +99,8 @@ $request = new GroceryRequest('apikey');
 
 $response = $request->addSearchTerm('biscuits')->send();
 ```
+
+----
 
 #### Product Request
 **`addGtin(string $gtin)`**<br>
@@ -121,6 +125,8 @@ $response = $request->addGtin('0332322384993')
                     ->addTpnc('34029384')
                     ->send();
 ```
+
+----
 
 #### Store Location Request
 **`addSort(string $type, string $value)`**<br>
@@ -161,6 +167,8 @@ $response = $storeRequest->addFilter(Filter::FILTER_FACILITY, Facility::FACILITY
 **`addLike(string $type, $value, bool $start = false)`**<br>
 Add a Like query paramter to filter the results. This is exactly the same as Filters, except the API will do a full text search for the the value. If `$start` is set to true, the search will only return results where the term is at the start.
 
+----
+
 #### Pagination
 Both the Store Location and Grocery request results are returned in pages. You can set the offset and limit on these request, as well as navigate the pages.
 
@@ -180,5 +188,33 @@ Get the previous page of results.
 Go to a specific page of results.
 
 ### Responses
+Each successful request will return a related response object. Eg a `StoreLocationRequest` returns a `StoreLocationResponse`. Each response object will contain information like response headers, response status, etc. as well as the models generated from the response data (see below).
 
 ### Models
+Models are generated from the responsed data retrieved from a request.
+
+#### Grocery
+
+----
+
+#### Product
+
+----
+
+#### Store
+
+----
+
+#### Opening Times and Exceptions
+
+----
+
+#### Facility
+
+----
+
+#### Guideline Daily Amounts (GDAs)
+
+----
+
+#### Nutrition
