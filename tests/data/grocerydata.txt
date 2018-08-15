@@ -1,0 +1,49 @@
+HTTP/1.1 200 OK
+status: 200
+cache-control: no-store, must-revalidate, no-cache
+pragma: no-cache
+transfer-encoding: chunked
+content-type: application/json
+content-encoding: gzip
+expires: Tue, 14 Aug 2018 21:27:15 GMT
+vary: Accept-Encoding
+x-query-phase: PRIMARY
+dc: aws2
+access-control-allow-origin: *
+access-control-allow-methods: GET,POST,OPTIONS,PUT,DELETE,HEAD
+access-control-allow-credentials: true
+access-control-allow-headers: Origin,Content-Type,Accept,Authorization
+x-proxy-cache: MISS
+date: Tue, 14 Aug 2018 21:27:15 GMT
+
+{
+    "uk": {
+        "ghs": {
+            "products": {
+                "results": [
+                    {
+                        "image": "http://img.tesco.com/Groceries/pi/956/7622210286956/IDShot_90x90.jpg",
+                        "superDepartment": "Food Cupboard",
+                        "tpnb": 56808958,
+                        "ContentsMeasureType": "G",
+                        "name": "Cadbury Dairy Milk Giant Buttons 119G",
+                        "UnitOfSale": 1,
+                        "description": [
+                            "Milk chocolates.",
+                            "Cocoa Life",
+                            "Partnering with Fairtrade Foundation",
+                            "www.cocoalife.org"
+                        ],
+                        "AverageSellingUnitWeight": 0.183,
+                        "UnitQuantity": "100G",
+                        "id": 285383766,
+                        "ContentsQuantity": 119,
+                        "department": "Chocolate",
+                        "price": 1.5,
+                        "unitprice": 1.27
+                    }
+                ]
+            }
+        }
+    }
+}

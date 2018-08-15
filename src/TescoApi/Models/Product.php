@@ -184,21 +184,21 @@ class Product extends AbstractModel
      *
      * @var Gda[]
      */
-    protected $_gdas;
+    protected $_gdas = [];
 
     /**
      * Product Nutrition Values
      *
      * @var Nutrition[]
      */
-    protected $_nutrition;
+    protected $_nutrition = [];
 
     /**
      * Product Ingredients
      *
      * @var array
      */
-    protected $_ingredients;
+    protected $_ingredients = [];
 
     /**
      * @inheritDoc
@@ -222,14 +222,14 @@ class Product extends AbstractModel
         'productCharacteristics.storageType' => 'storageType',
         'productCharacteristics.isNonLiquidAnalgesic' => 'setIsNonLiquidAnalgesic',
         'productCharacteristics.containsLoperamide' => 'setContainsLoperamide',
-        'pkgDimensions.width' => 'width',
-        'pkgDimensions.height' => 'height',
-        'pkgDimensions.depth' => 'depth',
-        'pkgDimensions.dimensionUom' => 'dimensionUnitOfMeasure',
-        'pkgDimensions.weight' => 'weight',
-        'pkgDimensions.weightUom' => 'weightUnitOfMeasure',
-        'pkgDimensions.volume' => 'volume',
-        'pkgDimensions.volumeUom' => 'volumeUnitOfMeasure',
+        'pkgDimensions.0.width' => 'width',
+        'pkgDimensions.0.height' => 'height',
+        'pkgDimensions.0.depth' => 'depth',
+        'pkgDimensions.0.dimensionUom' => 'dimensionUnitOfMeasure',
+        'pkgDimensions.0.weight' => 'weight',
+        'pkgDimensions.0.weightUom' => 'weightUnitOfMeasure',
+        'pkgDimensions.0.volume' => 'volume',
+        'pkgDimensions.0.volumeUom' => 'volumeUnitOfMeasure',
         'ingredients' => 'ingredients',
         'gda.gdaRefs.values' => 'setGdaReferences',
         'calcNutrition.calcNutrients' => 'setNutritionValues'
@@ -421,7 +421,7 @@ class Product extends AbstractModel
      *
      * @return string
      */
-    public function getAverageMeasure(): string
+    public function getAverageMeasure(): ?string
     {
         return $this->_averageMeasure;
     }
@@ -628,5 +628,35 @@ class Product extends AbstractModel
     public function getVolumeWithMeasurement(): string
     {
         return $this->getVolume() . $this->getVolumeMeasurement();
+    }
+
+    /**
+     * Get Product GDAs
+     *
+     * @return array
+     */
+    public function getGdas(): array
+    {
+        return $this->_gdas;
+    }
+
+    /**
+     * Get Product Nutrition values
+     *
+     * @return array
+     */
+    public function getNutrition(): array
+    {
+        return $this->_nutrition;
+    }
+
+    /**
+     * Get Product Ingredients
+     *
+     * @return array
+     */
+    public function getIngredients(): array
+    {
+        return $this->_ingredients;
     }
 }

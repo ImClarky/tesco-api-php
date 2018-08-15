@@ -26,7 +26,7 @@ class Grocery extends AbstractModel
     /**
      * Grocery Description
      *
-     * @var string
+     * @var array
      */
     protected $_description;
 
@@ -116,9 +116,10 @@ class Grocery extends AbstractModel
     protected $_dataMap = [
         'id' => 'id',
         'name' => 'name',
-        'description' => 'setDescription',
+        'description' => 'description',
         'tpnb' => 'tpnb',
         'image' => 'image',
+        'department' => 'department',
         'superDepartment' => 'superDepartment',
         'price' => 'price',
         'unitprice' => 'unitPrice',
@@ -162,9 +163,9 @@ class Grocery extends AbstractModel
     /**
      * Get the Grocery Description
      *
-     * @return string
+     * @return array
      */
-    public function getDescription(): string
+    public function getDescription(): array
     {
         return $this->_description;
     }
