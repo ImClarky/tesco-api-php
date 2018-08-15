@@ -3,6 +3,9 @@
     "type": "library",
     "description": "A PHP Client for the Tesco Supermarket API",
     "license": "MIT",
+    "require": {
+        "php": "^7.1"
+    },
     "require-dev": {
         "phpunit/phpunit": "^7.1"
     },
