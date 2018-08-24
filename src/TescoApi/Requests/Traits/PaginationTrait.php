@@ -3,6 +3,7 @@
 namespace ImClarky\TescoApi\Requests\Traits;
 
 use ImClarky\TescoApi\Responses\AbstractResponse;
+use ImClarky\TescoApi\Requests\AbstractRequest;
 
 /**
  * Pagination trait
@@ -70,7 +71,7 @@ trait PaginationTrait
      *
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    public function setLimit(int $limit): self
+    public function setLimit(int $limit): AbstractRequest
     {
         $this->_limit = $limit;
         return $this;
@@ -81,7 +82,7 @@ trait PaginationTrait
      *
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    public function setOffset(int $offset): self
+    public function setOffset(int $offset): AbstractRequest
     {
         $this->_offset = $offset;
         return $this;
