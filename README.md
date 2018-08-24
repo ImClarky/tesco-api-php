@@ -4,6 +4,7 @@ A PHP Client for the Tesco Supermarket API
 [![Packagist](https://img.shields.io/packagist/v/Imclarky/tesco-api.svg)](https://packagist.org/packages/imclarky/tesco-api)
 [![Packagist Pre Release](https://img.shields.io/packagist/vpre/Imclarky/tesco-api.svg)](https://packagist.org/packages/imclarky/tesco-api)
 [![Build Status](https://travis-ci.org/ImClarky/tesco-api-php.svg?branch=master)](https://travis-ci.org/ImClarky/tesco-api-php)
+[![Coverage Status](https://coveralls.io/repos/github/ImClarky/tesco-api-php/badge.svg?branch=master)](https://coveralls.io/github/ImClarky/tesco-api-php?branch=master)
 
 ## Contents
 - [Getting Started](#getting-started)
