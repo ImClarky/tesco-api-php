@@ -7,8 +7,8 @@ before_install:
   - travis_retry composer self-update
 
 install:
-  - travis_retry composer require --no-update satooshi/php-coveralls:^2.0
-  - travis_retry composer install --no-interaction --prefer-dist
+  - travis_retry composer require satooshi/php-coveralls:^2.0
+  - travis_retry composer install
 
 before_script:
   - mkdir -p build/logs
