@@ -14,10 +14,10 @@ before_script:
   - mkdir -p build/logs
 
 script:
-  - travis_wait ./vendor/bin/phpunit --verbose --coverage-clover build/logs/clover.xml
+  - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
 after_success:
-  - travis_retry php vendor/bin/coveralls
+  - travis_retry php vendor/bin/coveralls -v
 
 notifications:
   email:
