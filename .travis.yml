@@ -4,9 +4,17 @@ php:
   - '7.1'
 
 before_script:
+  - composer require satooshi/php-coveralls
   - composer install
+
+script:
+- ./vendor/bin/phpunit --coverage-clover ./tests/logs/clover.xml
+ 
+after_script:
+- php vendor/bin/coveralls -v
 
 notifications:
   email:
-    - seandclark94@gmail.com
-  on_success: never
+    on_success: never
+  
+  
