@@ -7,7 +7,7 @@ use ImClarky\TescoApi\Requests\Interfaces\PaginationInterface;
 use ImClarky\TescoApi\Requests\Traits\PaginationTrait;
 use ImClarky\TescoApi\Responses\GroceryResponse;
 use ImClarky\TescoApi\Exceptions\RequestException;
-use ImClarky\TescoApi\Responses\ProductResponse;
+use ImClarky\TescoApi\Responses\AbstractResponse;
 
 /**
  * Grocery Request Class
@@ -68,7 +68,7 @@ class GroceryRequest extends AbstractRequest implements PaginationInterface
      * @return GroceryResponse
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    protected function resolveResponse(): ProductResponse
+    protected function resolveResponse(): AbstractResponse
     {
         return new GroceryResponse($this->_results);
     }
