@@ -10,9 +10,4 @@
             <directory>tests/unit</directory>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src/TescoApi</directory>
-        </whitelist>
-    </filter>
 </phpunit>
