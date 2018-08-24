@@ -67,7 +67,7 @@ class GroceryRequest extends AbstractRequest implements PaginationInterface
      * @return GroceryResponse
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    protected function resolveResponse(): GroceryResponse
+    protected function resolveResponse(): AbstractResponse
     {
         return new GroceryResponse($this->_results);
     }
