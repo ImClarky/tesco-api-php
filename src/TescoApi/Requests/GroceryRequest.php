@@ -65,7 +65,7 @@ class GroceryRequest extends AbstractRequest implements PaginationInterface
     /**
      * Create a new response instance
      *
-     * @return GroceryResponse
+     * @return AbstractResponse
      * @author Sean Clark <sean.clark@d3r.com>
      */
     protected function resolveResponse(): AbstractResponse

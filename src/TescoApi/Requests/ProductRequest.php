@@ -3,7 +3,7 @@
 namespace ImClarky\TescoApi\Requests;
 
 use ImClarky\TescoApi\Requests\AbstractRequest;
-use ImClarky\TescoApi\Responses\ProductResponse;
+use ImClarky\TescoApi\Responses\AbstractResponse;
 
 /**
  * Product Request Class
@@ -139,10 +139,10 @@ class ProductRequest extends AbstractRequest
     /**
      * Create a new Response Instance
      *
-     * @return ProductResponse
+     * @return AbstractResponse
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    protected function resolveResponse(): ProductResponse
+    protected function resolveResponse(): AbstractResponse
     {
         return new ProductResponse($this->_result);
     }

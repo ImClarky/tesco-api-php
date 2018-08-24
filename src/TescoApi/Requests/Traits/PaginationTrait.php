@@ -2,6 +2,8 @@
 
 namespace ImClarky\TescoApi\Requests\Traits;
 
+use ImClarky\TescoApi\Responses\AbstractResponse;
+
 /**
  * Pagination trait
  *

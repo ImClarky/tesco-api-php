@@ -8,7 +8,7 @@ use ImClarky\TescoApi\Requests\Store\Sort;
 use ImClarky\TescoApi\Requests\Store\Like;
 use ImClarky\TescoApi\Requests\Interfaces\PaginationInterface;
 use ImClarky\TescoApi\Requests\Traits\PaginationTrait;
-use ImClarky\TescoApi\Responses\StoreLocationResponse;
+use ImClarky\TescoApi\Responses\AbstractResponse;
 
 /**
  * Store Location Request Class
@@ -150,10 +150,10 @@ class StoreLocationRequest extends AbstractRequest implements PaginationInterfac
     /**
      * Create a new Response Instance
      *
-     * @return StoreLocationResponse
+     * @return AbstractResponse
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    protected function resolveResponse(): StoreLocationResponse
+    protected function resolveResponse(): AbstractResponse
     {
         return new StoreLocationResponse($this->_result);
     }
