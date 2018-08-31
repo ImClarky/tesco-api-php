@@ -3,17 +3,24 @@
 use PHPUnit\Framework\TestCase;
 use ImClarky\TescoApi\Responses\ProductResponse;
 use ImClarky\TescoApi\Models\Product;
+use Dotenv\Dotenv;
 
 class ProductAPITest extends TestCase
 {
     protected $_response;
     protected $_model;
+    protected $_apiKey;
 
     public function __construct()
     {
         $file = file_get_contents(__DIR__ . '/../data/productdata.txt');
         $this->_response = new ProductResponse($file);
         $this->_model = $this->_response->getModels()[0];
+
+        $dotenv = new Dotenv(dirname(dirname(__DIR__)));
+        $dotenv->load();
+
+        $this->_apiKey = $_ENV['TESCO_API'];
 
         parent::__construct();
     }

@@ -1,13 +1,16 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use ImClarky\TescoApi\Requests\GroceryRequest;
 use ImClarky\TescoApi\Responses\GroceryResponse;
 use ImClarky\TescoApi\Models\Grocery;
+use Dotenv\Dotenv;
 
 class GroceryAPITest extends TestCase
 {
     protected $_response;
     protected $_model;
+    protected $_apiKey;
 
     public function __construct()
     {
@@ -15,7 +18,17 @@ class GroceryAPITest extends TestCase
         $this->_response = new GroceryResponse($file);
         $this->_model = $this->_response->getModels()[0];
 
+        $dotenv = new Dotenv(dirname(dirname(__DIR__)));
+        $dotenv->load();
+
+        $this->_apiKey = $_ENV['TESCO_API'];
+
         parent::__construct();
+    }
+
+    public function testInitialisation()
+    {
+        $this->assertInstanceOf(GroceryRequest::class, (new GroceryRequest($this->_apiKey)));
     }
 
     public function testResponseClass()

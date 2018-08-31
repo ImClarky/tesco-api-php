@@ -6,17 +6,24 @@ use ImClarky\TescoApi\Models\Store;
 use ImClarky\TescoApi\Models\Store\Facility;
 use ImClarky\TescoApi\Models\Store\OpeningTime;
 use ImClarky\TescoApi\Models\Store\OpeningTimeException;
+use Dotenv\Dotenv;
 
 class StoreAPITest extends TestCase
 {
     protected $_response;
     protected $_model;
+    protected $_apiKey;
 
     public function __construct()
     {
         $file = file_get_contents(__DIR__ . '/../data/storedata.txt');
         $this->_response = new StoreLocationResponse($file);
         $this->_model = $this->_response->getModels()[0];
+
+        $dotenv = new Dotenv(dirname(dirname(__DIR__)));
+        $dotenv->load();
+
+        $this->_apiKey = $_ENV['TESCO_API'];
 
         parent::__construct();
     }
