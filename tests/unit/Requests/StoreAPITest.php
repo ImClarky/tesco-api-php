@@ -1,15 +1,18 @@
 <?php
 
+namespace ImClarky\TescoApi\Tests\Requests;
+
 use PHPUnit\Framework\TestCase;
 use Dotenv\Dotenv;
 use ImClarky\TescoApi\Requests\StoreLocationRequest;
 use ImClarky\TescoApi\Responses\StoreLocationResponse;
+use ImClarky\TescoApi\Tests\PHPUnitHelpers;
 
 class StoreAPITest extends TestCase
 {
     public static function setUpBeforeClass()
     {
-        $directory = dirname(dirname(__DIR__));
+        $directory = dirname(__DIR__, 3);
 
         if (file_exists($directory . '/.env')) {
             $dotenv = new Dotenv($directory);
