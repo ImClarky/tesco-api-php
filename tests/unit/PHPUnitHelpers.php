@@ -6,9 +6,9 @@ use ReflectionClass;
 
 class PHPUnitHelpers
 {
-    public static function callMethodAsPublic($class, $method, $args = null)
+    public static function callMethodAsPublic($object, $method, $args = null)
     {
-        $class = new ReflectionClass($class);
+        $class = new ReflectionClass($object);
 
         $method = $class->getMethod($method);
         $method->setAccessible(true);
@@ -19,7 +19,7 @@ class PHPUnitHelpers
                 : $method->invokeArgs([$args]);
         }
 
-        return $method->invoke();
+        return $method->invoke($object);
     }
 
     public static function getPropertyAsPublic($object, $property)

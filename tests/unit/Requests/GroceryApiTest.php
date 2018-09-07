@@ -4,11 +4,11 @@ namespace ImClarky\TescoApi\Tests\Requests;
 
 use PHPUnit\Framework\TestCase;
 use Dotenv\Dotenv;
-use ImClarky\TescoApi\Requests\StoreLocationRequest;
-use ImClarky\TescoApi\Responses\StoreLocationResponse;
+use ImClarky\TescoApi\Requests\GroceryRequest;
+use ImClarky\TescoApi\Responses\GroceryResponse;
 use ImClarky\TescoApi\Tests\PHPUnitHelpers;
 
-class StoreAPITest extends TestCase
+class GroceryAPITest extends TestCase
 {
     public static function setUpBeforeClass()
     {
@@ -22,8 +22,8 @@ class StoreAPITest extends TestCase
 
     public function testStoreLocationRequest()
     {
-        $request = new StoreLocationRequest($_ENV['TESCO_API']);
-        $this->assertInstanceOf(StoreLocationRequest::class, $request);
+        $request = new GroceryRequest($_ENV['TESCO_API']);
+        $this->assertInstanceOf(GroceryRequest::class, $request);
         $this->assertInternalType('resource', PHPUnitHelpers::getPropertyAsPublic($request, '_curl'));
         $this->assertEquals($_ENV['TESCO_API'], PHPUnitHelpers::getPropertyAsPublic($request, '_apiKey'));
 
@@ -35,8 +35,9 @@ class StoreAPITest extends TestCase
      */
     public function testSendRequest($request)
     {
-        $response = $request->send();
-        $this->assertInstanceOf(StoreLocationResponse::class, $response);
+
+        $response = $request->addSearchTerm('chocolate')->send();
+        $this->assertInstanceOf(GroceryResponse::class, $response);
 
         return $response;
     }
@@ -65,7 +66,7 @@ class StoreAPITest extends TestCase
         PHPUnitHelpers::callMethodAsPublic($request, 'buildQueryString');
 
         $queryString = PHPUnitHelpers::getPropertyAsPublic($request, '_queryString');
-        $this->assertEquals("?limit=10&offset=0", $queryString);
+        $this->assertEquals("?query=chocolate&limit=10&offset=0", $queryString);
     }
 
     /**
@@ -77,6 +78,6 @@ class StoreAPITest extends TestCase
 
         $requestUri = PHPUnitHelpers::callMethodAsPublic($request, 'getRequestUri');
 
-        $this->assertEquals("https://dev.tescolabs.com/locations/search?limit=10&offset=0", $requestUri);
+        $this->assertEquals("https://dev.tescolabs.com/grocery/products?query=chocolate&limit=10&offset=0", $requestUri);
     }
 }

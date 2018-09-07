@@ -89,9 +89,8 @@ trait PaginationTrait
     }
 
     /**
-     * Get the Offset
+     * @inheritDoc
      *
-     * @return integer
      * @author Sean Clark <sean.clark@d3r.com>
      */
     public function getOffset(): int
@@ -100,13 +99,23 @@ trait PaginationTrait
     }
 
     /**
-     * Get the Limit
+     * @inheritDoc
      *
-     * @return integer
      * @author Sean Clark <sean.clark@d3r.com>
      */
     public function getLimit(): int
     {
         return $this->_limit;
+    }
+
+    /**
+     * Get the Pagination Query String
+     *
+     * @return string
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    protected function getPaginationQueryString(): string
+    {
+        return "limit={$this->getLimit()}&offset={$this->getOffset()}";
     }
 }

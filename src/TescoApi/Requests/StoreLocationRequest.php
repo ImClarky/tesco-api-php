@@ -9,6 +9,7 @@ use ImClarky\TescoApi\Requests\Store\Like;
 use ImClarky\TescoApi\Requests\Interfaces\PaginationInterface;
 use ImClarky\TescoApi\Requests\Traits\PaginationTrait;
 use ImClarky\TescoApi\Responses\AbstractResponse;
+use ImClarky\TescoApi\Responses\StoreLocationResponse;
 
 /**
  * Store Location Request Class
@@ -142,9 +143,11 @@ class StoreLocationRequest extends AbstractRequest implements PaginationInterfac
             $segments[] = $param . "=" . $values;
         }
 
-        $this->_queryString .= implode('&', $segments)
-            . "&limit=" . $this->getLimit()
-            . "&offset=" . $this->getOffset();
+        $this->_queryString = "?" . implode('&', $segments);
+
+        $this->_queryString .= empty($segments)
+            ? $this->getPaginationQueryString()
+            : "&" . $this->getPaginationQueryString();
     }
 
     /**

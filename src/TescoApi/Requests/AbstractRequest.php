@@ -34,7 +34,7 @@ abstract class AbstractRequest
      * @var string
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    protected $_queryString = '?';
+    protected $_queryString;
 
     /**
      * The cURL resource

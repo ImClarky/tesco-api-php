@@ -54,4 +54,20 @@ interface PaginationInterface
      * @author Sean Clark <sean.clark@d3r.com>
      */
     public function setOffset(int $offset): AbstractRequest;
+
+    /**
+     * Get the Offset
+     *
+     * @return integer
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function getOffset(): int;
+
+    /**
+     * Get the Limit
+     *
+     * @return integer
+     * @author Sean Clark <sean.clark@d3r.com>
+     */
+    public function getLimit(): int;
 }

@@ -31,7 +31,7 @@ class GroceryRequest extends AbstractRequest implements PaginationInterface
      *
      * @author Sean Clark <sean.clark@d3r.com>
      */
-    protected $_uri = 'grocery/products';
+    protected $_uri = '/grocery/products';
 
     /**
      * Add a search term to query
@@ -57,9 +57,7 @@ class GroceryRequest extends AbstractRequest implements PaginationInterface
             throw new RequestException('Search term must be supplied');
         }
 
-        $this->_queryString .= "query=" . $_searchTerm
-            . "&limit=" . $this->getLimit()
-            . "&offset=" . $this->getOffset();
+        $this->_queryString = "?query=" . $this->_searchTerm . "&" . $this->getPaginationQueryString();
     }
 
     /**
@@ -70,6 +68,6 @@ class GroceryRequest extends AbstractRequest implements PaginationInterface
      */
     protected function resolveResponse(): AbstractResponse
     {
-        return new GroceryResponse($this->_results);
+        return new GroceryResponse($this->_result);
     }
 }
