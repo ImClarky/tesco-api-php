@@ -22,10 +22,10 @@ class StoreAPITest extends TestCase
 
     public function testStoreLocationRequest()
     {
-        $request = new StoreLocationRequest($_ENV['TESCO_API']);
+        $request = new StoreLocationRequest(getenv('TESCO_API'));
         $this->assertInstanceOf(StoreLocationRequest::class, $request);
         $this->assertInternalType('resource', PHPUnitHelpers::getPropertyAsPublic($request, '_curl'));
-        $this->assertEquals($_ENV['TESCO_API'], PHPUnitHelpers::getPropertyAsPublic($request, '_apiKey'));
+        $this->assertEquals(getenv('TESCO_API'), PHPUnitHelpers::getPropertyAsPublic($request, '_apiKey'));
 
         return $request;
     }

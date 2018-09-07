@@ -18,18 +18,14 @@ class GroceryAPITest extends TestCase
             $dotenv = new Dotenv($directory);
             $dotenv->load();
         }
-
-        echo '<pre>';
-        var_dump(getenv());
-        exit;
     }
 
     public function testStoreLocationRequest()
     {
-        $request = new GroceryRequest($_ENV['TESCO_API']);
+        $request = new GroceryRequest(getenv('TESCO_API'));
         $this->assertInstanceOf(GroceryRequest::class, $request);
         $this->assertInternalType('resource', PHPUnitHelpers::getPropertyAsPublic($request, '_curl'));
-        $this->assertEquals($_ENV['TESCO_API'], PHPUnitHelpers::getPropertyAsPublic($request, '_apiKey'));
+        $this->assertEquals(getenv('TESCO_API'), PHPUnitHelpers::getPropertyAsPublic($request, '_apiKey'));
 
         return $request;
     }
