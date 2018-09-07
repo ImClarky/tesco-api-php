@@ -18,6 +18,10 @@ class GroceryAPITest extends TestCase
             $dotenv = new Dotenv($directory);
             $dotenv->load();
         }
+
+        echo '<pre>';
+        var_dump($_ENV);
+        exit;
     }
 
     public function testStoreLocationRequest()
