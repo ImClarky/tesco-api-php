@@ -20,7 +20,7 @@ class GroceryAPITest extends TestCase
         }
 
         echo '<pre>';
-        var_dump($_ENV);
+        var_dump(getenv());
         exit;
     }
 
