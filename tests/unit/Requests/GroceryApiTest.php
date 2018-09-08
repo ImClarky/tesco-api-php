@@ -6,6 +6,8 @@ use PHPUnit\Framework\TestCase;
 use Dotenv\Dotenv;
 use ImClarky\TescoApi\Requests\GroceryRequest;
 use ImClarky\TescoApi\Responses\GroceryResponse;
+use ImClarky\TescoApi\Exceptions\RequestException;
+use ImClarky\TescoApi\Models\Grocery;
 use ImClarky\TescoApi\Tests\PHPUnitHelpers;
 
 class GroceryAPITest extends TestCase
@@ -28,6 +30,15 @@ class GroceryAPITest extends TestCase
         $this->assertEquals(getenv('TESCO_API'), PHPUnitHelpers::getPropertyAsPublic($request, '_apiKey'));
 
         return $request;
+    }
+
+    /**
+     * @depends testStoreLocationRequest
+     */
+    public function testNoSearchTermException($request)
+    {
+        $this->expectException(RequestException::class);
+        $response = $request->send();
     }
 
     /**
@@ -79,5 +90,16 @@ class GroceryAPITest extends TestCase
         $requestUri = PHPUnitHelpers::callMethodAsPublic($request, 'getRequestUri');
 
         $this->assertEquals("https://dev.tescolabs.com/grocery/products?query=chocolate&limit=10&offset=0", $requestUri);
+    }
+
+    /**
+     * @depends testSendRequest
+     */
+    public function testResponseModels($response)
+    {
+        $models = $response->getModels();
+
+        $this->assertInternalType('array', $models);
+        $this->assertInstanceOf(Grocery::class, $models[0]);
     }
 }
