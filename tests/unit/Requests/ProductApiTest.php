@@ -4,13 +4,13 @@ namespace ImClarky\TescoApi\Tests\Requests;
 
 use PHPUnit\Framework\TestCase;
 use Dotenv\Dotenv;
-use ImClarky\TescoApi\Requests\GroceryRequest;
-use ImClarky\TescoApi\Responses\GroceryResponse;
+use ImClarky\TescoApi\Requests\ProductRequest;
+use ImClarky\TescoApi\Responses\ProductResponse;
 use ImClarky\TescoApi\Exceptions\RequestException;
-use ImClarky\TescoApi\Models\Grocery;
+use ImClarky\TescoApi\Models\Product;
 use ImClarky\TescoApi\Tests\PHPUnitHelpers;
 
-class GroceryAPITest extends TestCase
+class ProductAPITest extends TestCase
 {
     public static function setUpBeforeClass()
     {
@@ -25,13 +25,13 @@ class GroceryAPITest extends TestCase
     public function testNoApiKeyException()
     {
         $this->expectException(RequestException::class);
-        $request = new GroceryRequest('');
+        $request = new ProductRequest('');
     }
 
     public function testStoreLocationRequest()
     {
-        $request = new GroceryRequest(getenv('TESCO_API'));
-        $this->assertInstanceOf(GroceryRequest::class, $request);
+        $request = new ProductRequest(getenv('TESCO_API'));
+        $this->assertInstanceOf(ProductRequest::class, $request);
         $this->assertInternalType('resource', PHPUnitHelpers::getPropertyAsPublic($request, '_curl'));
         $this->assertEquals(getenv('TESCO_API'), PHPUnitHelpers::getPropertyAsPublic($request, '_apiKey'));
 
@@ -41,20 +41,10 @@ class GroceryAPITest extends TestCase
     /**
      * @depends testStoreLocationRequest
      */
-    public function testNoSearchTermException($request)
-    {
-        $this->expectException(RequestException::class);
-        $response = $request->send();
-    }
-
-    /**
-     * @depends testStoreLocationRequest
-     */
     public function testSendRequest($request)
     {
-
-        $response = $request->addSearchTerm('chocolate')->send();
-        $this->assertInstanceOf(GroceryResponse::class, $response);
+        $response = $request->addGtin('00000050243228')->send();
+        $this->assertInstanceOf(ProductResponse::class, $response);
 
         return $response;
     }
@@ -83,7 +73,7 @@ class GroceryAPITest extends TestCase
         PHPUnitHelpers::callMethodAsPublic($request, 'buildQueryString');
 
         $queryString = PHPUnitHelpers::getPropertyAsPublic($request, '_queryString');
-        $this->assertEquals("?query=chocolate&limit=10&offset=0", $queryString);
+        $this->assertEquals("?gtin=00000050243228", $queryString);
     }
 
     /**
@@ -95,7 +85,7 @@ class GroceryAPITest extends TestCase
 
         $requestUri = PHPUnitHelpers::callMethodAsPublic($request, 'getRequestUri');
 
-        $this->assertEquals("https://dev.tescolabs.com/grocery/products?query=chocolate&limit=10&offset=0", $requestUri);
+        $this->assertEquals("https://dev.tescolabs.com/product?gtin=00000050243228", $requestUri);
     }
 
     /**
@@ -106,6 +96,6 @@ class GroceryAPITest extends TestCase
         $models = $response->getModels();
 
         $this->assertInternalType('array', $models);
-        $this->assertInstanceOf(Grocery::class, $models[0]);
+        $this->assertInstanceOf(Product::class, $models[0]);
     }
 }

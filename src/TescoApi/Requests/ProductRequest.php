@@ -4,6 +4,7 @@ namespace ImClarky\TescoApi\Requests;
 
 use ImClarky\TescoApi\Requests\AbstractRequest;
 use ImClarky\TescoApi\Responses\AbstractResponse;
+use ImClarky\TescoApi\Responses\ProductResponse;
 
 /**
  * Product Request Class
@@ -133,7 +134,7 @@ class ProductRequest extends AbstractRequest
             }
         }
 
-        $this->_queryString .= implode('&', $params);
+        $this->_queryString = '?' . implode('&', $params);
     }
 
     /**

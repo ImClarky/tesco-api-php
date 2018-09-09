@@ -7,6 +7,8 @@ use Dotenv\Dotenv;
 use ImClarky\TescoApi\Requests\StoreLocationRequest;
 use ImClarky\TescoApi\Responses\StoreLocationResponse;
 use ImClarky\TescoApi\Tests\PHPUnitHelpers;
+use ImClarky\TescoApi\Exceptions\RequestException;
+use ImClarky\TescoApi\Models\Store;
 
 class StoreAPITest extends TestCase
 {
@@ -18,6 +20,12 @@ class StoreAPITest extends TestCase
             $dotenv = new Dotenv($directory);
             $dotenv->load();
         }
+    }
+
+    public function testNoApiKeyException()
+    {
+        $this->expectException(RequestException::class);
+        $request = new StoreLocationRequest('');
     }
 
     public function testStoreLocationRequest()
@@ -78,5 +86,16 @@ class StoreAPITest extends TestCase
         $requestUri = PHPUnitHelpers::callMethodAsPublic($request, 'getRequestUri');
 
         $this->assertEquals("https://dev.tescolabs.com/locations/search?limit=10&offset=0", $requestUri);
+    }
+
+    /**
+     * @depends testSendRequest
+     */
+    public function testResponseModels($response)
+    {
+        $models = $response->getModels();
+
+        $this->assertInternalType('array', $models);
+        $this->assertInstanceOf(Store::class, $models[0]);
     }
 }
