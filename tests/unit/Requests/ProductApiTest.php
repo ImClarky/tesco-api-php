@@ -43,7 +43,12 @@ class ProductAPITest extends TestCase
      */
     public function testSendRequest($request)
     {
-        $response = $request->addGtin('00000050243228')->send();
+        $response = $request
+            ->addGtin('05052910081995')
+            ->addTpnb('051442919')
+            ->addTpnc('275456460')
+            ->addCatId('785-7791')
+            ->send();
         $this->assertInstanceOf(ProductResponse::class, $response);
 
         return $response;
@@ -73,7 +78,7 @@ class ProductAPITest extends TestCase
         PHPUnitHelpers::callMethodAsPublic($request, 'buildQueryString');
 
         $queryString = PHPUnitHelpers::getPropertyAsPublic($request, '_queryString');
-        $this->assertEquals("?gtin=00000050243228", $queryString);
+        $this->assertEquals("?gtin=05052910081995&tpnb=051442919&tpnc=275456460&catid=785-7791", $queryString);
     }
 
     /**
@@ -85,7 +90,7 @@ class ProductAPITest extends TestCase
 
         $requestUri = PHPUnitHelpers::callMethodAsPublic($request, 'getRequestUri');
 
-        $this->assertEquals("https://dev.tescolabs.com/product?gtin=00000050243228", $requestUri);
+        $this->assertEquals("https://dev.tescolabs.com/product?gtin=05052910081995&tpnb=051442919&tpnc=275456460&catid=785-7791", $requestUri);
     }
 
     /**
