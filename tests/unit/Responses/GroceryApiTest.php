@@ -11,7 +11,7 @@ class GroceryAPITest extends TestCase
 
     public function __construct()
     {
-        $file = file_get_contents(__DIR__ . '/../data/grocerydata.txt');
+        $file = file_get_contents(__DIR__ . '/../../data/grocerydata.txt');
         $this->_response = new GroceryResponse($file);
         $this->_model = $this->_response->getModels()[0];
 

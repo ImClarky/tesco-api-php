@@ -11,7 +11,7 @@ class ProductAPITest extends TestCase
 
     public function __construct()
     {
-        $file = file_get_contents(__DIR__ . '/../data/productdata.txt');
+        $file = file_get_contents(__DIR__ . '/../../data/productdata.txt');
         $this->_response = new ProductResponse($file);
         $this->_model = $this->_response->getModels()[0];
 

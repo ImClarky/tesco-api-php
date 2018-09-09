@@ -14,7 +14,7 @@ class StoreAPITest extends TestCase
 
     public function __construct()
     {
-        $file = file_get_contents(__DIR__ . '/../data/storedata.txt');
+        $file = file_get_contents(__DIR__ . '/../../data/storedata.txt');
         $this->_response = new StoreLocationResponse($file);
         $this->_model = $this->_response->getModels()[0];
 
