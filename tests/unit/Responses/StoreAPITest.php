@@ -127,6 +127,8 @@ class StoreAPITest extends TestCase
                 Facility::FACILITY_COINSTAR
             ])
         );
+        $this->assertFalse($this->_model->hasFacilities([]));
+        $this->assertFalse($this->_model->getFacility(Facility::FACILITY_HAND_CAR_WASH));
 
         $this->assertInstanceOf(Facility::class, $this->_model->getFacility(Facility::FACILITY_ATM));
     }
