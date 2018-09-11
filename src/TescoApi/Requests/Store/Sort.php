@@ -17,6 +17,8 @@ class Sort
         } else {
             $this->_filters[$type] = [$value];
         }
+
+        return $this;
     }
 
     public function buildQuerySegment(): string

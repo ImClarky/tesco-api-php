@@ -462,7 +462,7 @@ class Store extends AbstractModel
         return $this->_facilities;
     }
 
-    public function getFacility(string $facility): Facility
+    public function getFacility(string $facility): ?Facility
     {
         foreach ($this->getFacilities() as $f) {
             if ($f->getName() === $facility) {
@@ -470,6 +470,6 @@ class Store extends AbstractModel
             }
         }
 
-        return false;
+        return null;
     }
 }

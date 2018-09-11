@@ -135,7 +135,7 @@ trait OpeningTimesTrait
      * @param DateTime $date The date to get
      * @return ImClarky\TescoApi\Models\Store\OpeningTimeException|boolean
      */
-    protected function getOpeningTimeExceptionByDate(DateTime $date): OpeningTimeException
+    protected function getOpeningTimeExceptionByDate(DateTime $date): ?OpeningTimeException
     {
         $isoDate = $date->format('Y-m-d');
 
@@ -145,7 +145,7 @@ trait OpeningTimesTrait
             }
         }
 
-        return false;
+        return null;
     }
 
     /**
@@ -154,7 +154,7 @@ trait OpeningTimesTrait
      * @param DateTime $date The date to get
      * @return ImClarky\TescoApi\Models\Store\OpeningTime|boolean
      */
-    protected function getOpeningTimeByDate(DateTime $date): OpeningTime
+    protected function getOpeningTimeByDate(DateTime $date): ?OpeningTime
     {
         $isoDayOfWeek = $date->format('N');
 
@@ -164,6 +164,6 @@ trait OpeningTimesTrait
             }
         }
 
-        return false;
+        return null;
     }
 }
