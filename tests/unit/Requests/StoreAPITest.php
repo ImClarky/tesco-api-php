@@ -11,6 +11,7 @@ use ImClarky\TescoApi\Exceptions\RequestException;
 use ImClarky\TescoApi\Models\Store;
 use ImClarky\TescoApi\Requests\Store\Like;
 use ImClarky\TescoApi\Models\Store\Facility;
+use ImClarky\TescoApi\Requests\Store\Filter;
 
 class StoreAPITest extends TestCase
 {
@@ -111,22 +112,39 @@ class StoreAPITest extends TestCase
         $request->addLike(Like::FILTER_TYPE, Store::TYPE_EXTRA);
         $request->addLike(Like::FILTER_FACILITY, Facility::FACILITY_ATM);
         $request->addLike(Like::FILTER_ISOCOUNTRYCODE, 'gb');
-        $request->addLike(Like::FILTER_NAME, 'Lakeside', true);
+        $request->addLike(Like::FILTER_NAME, ['Lakeside', 'Hackney'], true);
         $request->addLike(Like::FILTER_STATUS, 'Trading');
 
-        $expected = [
+        $expectedFiltersArray = [
             'branchNumber' => ['1234'],
             'category' => ['Store'],
             'type' => ['Extra'],
             'facilities' => ['ATM'],
             'isoCountryCode' => ['gb'],
-            'name' => ['^Lakeside'],
+            'name' => [['^Lakeside', '^Hackney']],
             'status' => ['Trading'],
         ];
+
+        $expectedFiltersString = "branchNumber:1234 AND category:Store AND type:Extra AND facilities:ATM AND isoCountryCode:gb AND name:^Lakeside,^Hackney AND status:Trading";
 
         $like = PHPUnitHelpers::getPropertyAsPublic($request, '_like');
 
         $this->assertInstanceOf(Like::class, $like);
-        $this->assertEquals($expected, PHPUnitHelpers::getPropertyAsPublic($like, '_filters'));
+        $this->assertEquals($expectedFiltersArray, PHPUnitHelpers::getPropertyAsPublic($like, '_filters'));
+        $this->assertEquals($expectedFiltersString, PHPUnitHelpers::callMethodAsPublic($like, 'buildQuerySegment'));
+    }
+
+    /**
+     * @depends testStoreLocationRequest
+     */
+    public function testAddingFilter($request)
+    {
+        $request->addFilter(Filter::FILTER_BRANCHNUMBER, '1234');
+        $request->addFilter(Filter::FILTER_CATEGORY, Store::CATEGORY_STORE);
+        $request->addFilter(Filter::FILTER_TYPE, Store::TYPE_EXTRA);
+        $request->addFilter(Filter::FILTER_FACILITY, Facility::FACILITY_ATM);
+        $request->addFilter(Filter::FILTER_ISOCOUNTRYCODE, 'gb');
+        $request->addFilter(Filter::FILTER_NAME, 'Lakeside');
+        $request->addFilter(Filter::FILTER_STATUS, 'Trading');
     }
 }
