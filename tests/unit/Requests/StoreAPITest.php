@@ -146,5 +146,23 @@ class StoreAPITest extends TestCase
         $request->addFilter(Filter::FILTER_ISOCOUNTRYCODE, 'gb');
         $request->addFilter(Filter::FILTER_NAME, 'Lakeside');
         $request->addFilter(Filter::FILTER_STATUS, 'Trading');
+
+        $expectedFiltersArray = [
+            'branchNumber' => ['1234'],
+            'category' => ['Store'],
+            'type' => ['Extra'],
+            'facilities' => ['ATM'],
+            'isoCountryCode' => ['gb'],
+            'name' => ['Lakeside'],
+            'status' => ['Trading'],
+        ];
+
+        $expectedQueryString = "branchNumber:1234 AND category:Store AND type:Extra AND facilities:ATM AND isoCountryCode:gb AND name:Lakeside AND status:Trading";
+
+        $filter = PHPUnitHelpers::getPropertyAsPublic($request, "_filter");
+
+        $this->assertInstanceOf(Filter::class, $filter);
+        $this->assertEquals($expectedFiltersArray, PHPUnitHelpers::getPropertyAsPublic($filter, '_filters'));
+        $this->assertEquals($expectedQueryString, PHPUnitHelpers::callMethodAsPublic($filter, 'buildQuerySegment'));
     }
 }
