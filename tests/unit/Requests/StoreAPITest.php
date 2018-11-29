@@ -12,6 +12,7 @@ use ImClarky\TescoApi\Models\Store;
 use ImClarky\TescoApi\Requests\Store\Like;
 use ImClarky\TescoApi\Models\Store\Facility;
 use ImClarky\TescoApi\Requests\Store\Filter;
+use ImClarky\TescoApi\Requests\Store\Sort;
 
 class StoreAPITest extends TestCase
 {
@@ -164,5 +165,25 @@ class StoreAPITest extends TestCase
         $this->assertInstanceOf(Filter::class, $filter);
         $this->assertEquals($expectedFiltersArray, PHPUnitHelpers::getPropertyAsPublic($filter, '_filters'));
         $this->assertEquals($expectedQueryString, PHPUnitHelpers::callMethodAsPublic($filter, 'buildQuerySegment'));
+    }
+
+    /**
+     * @depends testStoreLocationRequest
+     */
+    public function testAddingSort($request)
+    {
+        $request->addSort(Sort::SORT_NEAR, 'SE11 5AP');
+
+        $expectedSortArray = [
+            'near' => ['SE11 5AP']
+        ];
+
+        $expectedQueryString = 'near:"SE11 5AP"';
+
+        $sort = $filter = PHPUnitHelpers::getPropertyAsPublic($request, "_sort");
+
+        $this->assertInstanceOf(Sort::class, $filter);
+        $this->assertEquals($expectedSortArray, PHPUnitHelpers::getPropertyAsPublic($sort, '_filters'));
+        $this->assertEquals($expectedQueryString, PHPUnitHelpers::callMethodAsPublic($sort, 'buildQuerySegment'));
     }
 }
