@@ -8,7 +8,7 @@ before_install:
 
 install:
   - travis_retry composer require php-coveralls/php-coveralls:^2.0
-  - travis_retry composer require block8/php-docblock-checker
+  - travis_retry composer require odan/docblock-checker
   - travis_retry composer install
 
 before_script:
@@ -16,7 +16,7 @@ before_script:
 
 script:
   - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
-  - ./vendor/bin/phpdoccheck -d "./src"
+  - ./vendor/bin/docblock-checker -d "./src"
 
 after_success:
   - travis_retry php ./vendor/bin/php-coveralls -v
