@@ -16,7 +16,7 @@ before_script:
 
 script:
   - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
-  - ./vendor/bin/docblock-checker -d "./src"
+#  - ./vendor/bin/docblock-checker -d "./src"
 
 after_success:
   - travis_retry php ./vendor/bin/php-coveralls -v
