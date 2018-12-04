@@ -30,6 +30,6 @@ class Sort
             }
         }
 
-        return implode(" AND ", $params);
+        return rawurlencode(implode(" AND ", $params));
     }
 }

@@ -57,7 +57,7 @@ class GroceryRequest extends AbstractRequest implements PaginationInterface
             throw new RequestException('Search term must be supplied');
         }
 
-        $this->_queryString = "?query=" . $this->_searchTerm . "&" . $this->getPaginationQueryString();
+        $this->_queryString = "?query=" . rawurlencode($this->_searchTerm) . "&" . $this->getPaginationQueryString();
     }
 
     /**

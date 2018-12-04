@@ -39,10 +39,20 @@ abstract class AbstractFilterable
         $params = [];
         foreach ($this->_filters as $filter => $values) {
             foreach ($values as $value) {
-                $params[] = $filter . ":" . (is_array($value) ? implode(",", $value) : $value);
+                if (is_array($value)) {
+                    foreach ($value as $k => $v) {
+                        $value[$k] = $this->addQuotes($v);
+                    }
+                }
+
+                $params[] = $filter . ":" . (is_array($value) ? implode(",", $value) : $this->addQuotes($value));
             }
         }
 
-        return implode(" AND ", $params);
+        return rawurlencode(implode(" AND ", $params));
+    }
+
+    protected function addQuotes($value) {
+        return strpos($value, " ") ? '"' . $value . '"' : $value;
     }
 }
